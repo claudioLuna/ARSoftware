@@ -43,12 +43,16 @@
     include_once($docRootSitio."modelo/Prestamo.php");
 	include_once($docRootSitio."modelo/Administrador.php");	
 	include_once($docRootSitio."modelo/Correo.php");
+	include_once($docRootSitio."modelo/Fecha.php");
+	
+	
 		
 	$stecnico = new Tecnico();
     $mar1 = new Marca();
 	$adm1 = new Administrador();
     $prestamo = new Prestamo();
     $correo = new Correo();
+    $fecha = new Fecha();
         
 	$usuario = $_SESSION["nombreUsuario"];
    
@@ -56,7 +60,23 @@
 	$_nombre = $adm1->listarAdministradorins2($usuario);
     $_prestamos = $prestamo->listarPrestamos($offset,$limit,$campoOrder,$order);
     $_correos = $correo->listarCorreosUsuario($usuario);
-     
+    
+    
+    
+    
+    for($i=0;$i<count($_stecnicos);$i++)
+    {
+    	$segunda= date("d-m-y H:i:s");
+    	$primera=$_stecnicos['fecha'];
+    	$ticketsVencen = $fecha->compararFechas($_stecnicos['fecha'],$segunda) ;
+    
+    
+    }
+    
+    
+    
+
+    
 ?> 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo $httpHostSitio?>plantilla/css/bootstrap.min.css" rel="stylesheet">
