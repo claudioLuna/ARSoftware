@@ -63,17 +63,27 @@
     
     
     
-    
-    for($i=0;$i<count($_stecnicos);$i++)
+    for($i=1;$i<=count($_stecnicos);$i++)
     {
-    	$segunda= date("d-m-y H:i:s");
-    	$primera=$_stecnicos['fecha'];
-    	$ticketsVencen = $fecha->compararFechas($_stecnicos['fecha'],$segunda) ;
-    
-    
+    	$segunda= date("Y-m-d H:i:s");
+    	
+    	
+    	$ticketsVencen = $fecha->compararFechas($_stecnicos[$i]['fecha'],$segunda);
+    	
+if($ticketsVencen >= 20)
+{
+
+	$a[]=$ticketsVencen;
+	$diasFaltantes= 30-$ticketsVencen; 
+	
+	//echo "$diasFaltantes dias para el vencimiento del tickets "; echo $_stecnicos[$i]['idreclamo'];
+	//echo "<br>";
+	//echo count($a);
+}
+
     }
     
-    
+
     
 
     
@@ -267,7 +277,7 @@
                             </a>
                         </div>
                     </div>
-                   <!--   <div class="col-lg-3 col-md-6">
+                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-red">
                             <div class="panel-heading">
                                 <div class="row">
@@ -275,7 +285,7 @@
                                         <i class="fa fa-support fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">13</div>
+                                        <div class="huge"><?php echo count($a);?></div>
                                         <div>Tickets que vencen.</div>
                                     </div>
                                 </div>
@@ -291,7 +301,7 @@
                             
                         </div>
                         
-                        -------------------->
+                   
                     </div>
                 </div>
                 <!-- /.row -->
