@@ -35,7 +35,7 @@
 	include_once($docRootSitio."modelo/Administrador.php");
 
     #Paginación	
-	$limit=25;		
+	$limit=15;		
 	if(is_numeric($_GET['pagina']) && $_GET['pagina']>=1){				
 		$offset = ($_GET['pagina']-1) * $limit;		
 	}
@@ -191,12 +191,12 @@
 		
 		<table class="table table-bordered table-hover table-striped">
 			<tr>
-				<th >					
+				<td>					
 					<center><b>Nombre</b></center>		
-				</th>
-				<th >										
+				</td>
+				<td>										
 					<center><b>Acciones</b></center>
-				</th>
+				</td>
 			</tr>	
 		
 		<?php for($i=1;$i<=count($_marcas);$i++){			
@@ -211,11 +211,11 @@
 				}
 		?>			
 			<tr>			
-			<th <?php echo $classTh?> >
+			<td>
 					<center><?php echo $_marcas[$i]['nombre']?></center>
-				</th>	
+				</td>	
 			
-				<th <?php echo $classTh?> >
+				<td>
 					<div id="celdaAcciones">									
 					<center><form method="post" action="modificarMarca.php">
 						<input type="hidden" name="Marca" value="<?php echo $_marcas[$i]['id']?>">
@@ -229,7 +229,7 @@
 						<input type="submit" value="Eliminar" class="btn btn-success" onclick="return confirm('¿Está seguro que desea eliminar la siguiente marca <?php echo $_marcas[$i]['nombre']?>?');">
 					</form></center>				
 					</div>
-				</th>								
+				</td>								
 			</tr>
 		<?php }?>
 		</table>

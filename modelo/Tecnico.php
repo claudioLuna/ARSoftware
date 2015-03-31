@@ -278,6 +278,40 @@ class Tecnico{
 		return $_tecnicos;	
 	}
 	
+	public function listarTecnicosPrincipal($offset="",$limit="",$campoOrder="",$order="",$usuario){		
+		global $docRootSitio;		
+		$this->setNombreUsuario($usuario);
+		
+		$q = "SELECT SQL_CALC_FOUND_ROWS * FROM tecnico WHERE nombreUsuario='{$this->getNombreUsuario()}' AND estado!=3";
+				
+		if($campoOrder!= "" && $order!=""){			
+			${$campoOrder} = $campoOrder;			
+			$q .= " ORDER BY  ${$campoOrder} $order ";						
+		}		
+		
+		if($limit!=""){
+			$q .= " LIMIT $offset,$limit ";			
+		}
+				
+		try{
+			$result = mysql_query($q);
+				if(!$result) {
+					throw new Exception("");
+				}
+		}      
+		catch (Exception $e) {        
+			$error['consulta'] = $q;
+			$error['mysql'] = mysql_error();            
+			include_once ($docRootSitio . "modulos/errores/listarErrores.php");
+			exit();
+		}
+		
+		$i1 = new Iterador();
+		$_tecnicos = $i1->iterarObjetos($result);	
+			
+		return $_tecnicos;	
+	}
+	
 	public function setTecnico($_post){
 		if(is_array($_post)){			
 			$_campos = array_keys($_post);		

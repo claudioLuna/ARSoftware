@@ -169,7 +169,7 @@ $_profesor = $adm1->listarAdministradorins2($profesor);
 		 <input type="hidden" name="usuario" value="<?php echo $profesor?>">	
 	         	<?php if(count($_correos)){?>	
 		
-		<center><table class="table table-hover">
+		<center><table class="table table-bordered table-hover table-striped">
 			<tr>		
 				<th style="width:25px;"><center>					
 					Accion			
@@ -180,7 +180,7 @@ $_profesor = $adm1->listarAdministradorins2($profesor);
 				<th ><center>					
 					Mensaje			
 				</center></th>
-				<th style="width:25px;"><center>					
+				<th style="width:55px;"><center>					
 					Fecha			
 				</center></th>
 			</tr>	
@@ -203,7 +203,7 @@ $_profesor = $adm1->listarAdministradorins2($profesor);
 				</label></center>
 			</td>	
 			<td <?php echo $class?> onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/correo/responderCorreo.php?destino=<?php echo $_correos[$i]['nombreOrigen']?>')">
-					<center><b><?php echo $_correos[$i]['asunto']?></b></center>
+					<center><?php echo $_correos[$i]['asunto']?></b></center>
 				</td>
 			<td <?php echo $class?> onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/correo/responderCorreo.php?destino=<?php echo $_correos[$i]['nombreOrigen']?>')">
 					<center><?php echo $_correos[$i]['mensaje']?></center>

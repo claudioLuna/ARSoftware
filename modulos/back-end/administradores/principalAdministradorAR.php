@@ -43,53 +43,20 @@
     include_once($docRootSitio."modelo/Prestamo.php");
 	include_once($docRootSitio."modelo/Administrador.php");	
 	include_once($docRootSitio."modelo/Correo.php");
-	
-	
+		
 	$stecnico = new Tecnico();
     $mar1 = new Marca();
 	$adm1 = new Administrador();
     $prestamo = new Prestamo();
     $correo = new Correo();
-    
-    
+        
 	$usuario = $_SESSION["nombreUsuario"];
    
-    $_stecnicos = $stecnico->listarTecnicos($offset,$limit,$campoOrder,$order,$usuario);
+    $_stecnicos = $stecnico->listarTecnicosPrincipal($offset,$limit,$campoOrder,$order,$usuario);
 	$_nombre = $adm1->listarAdministradorins2($usuario);
     $_prestamos = $prestamo->listarPrestamos($offset,$limit,$campoOrder,$order);
     $_correos = $correo->listarCorreosUsuario($usuario);
-   
-    
-   
-    /*if(count($_stecnicos)){
-       
-    
-    	for($i=1;$i<=count($_stecnicos);$i++){
-    
-
-    	
-   	$_diastranscurridos= $stecnico->dias_transcurridos($_stecnicos[$i]['fecha'],'2015-03-21');
-    
-    //echo $_stecnicos[$i]['fecha'];
-    
-   // echo "$_diastranscurridos<br>";
-      echo $_stecnicos[$i]['numeroSerie'];
-
-      echo"<br>";
-
-  
-    }
-    }
-    */
-    
-    // Salida : 17
-    
-   
-    
-    
-	
-	//include_once($docRootSitio."utiles/ctrlAcceso.php");	
-     //echo $httpHostSitio ;
+     
 ?> 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo $httpHostSitio?>plantilla/css/bootstrap.min.css" rel="stylesheet">
@@ -280,7 +247,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
+                   <!--   <div class="col-lg-3 col-md-6">
                         <div class="panel panel-red">
                             <div class="panel-heading">
                                 <div class="row">
@@ -293,6 +260,7 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <a href="#">
                                 <div class="panel-footer">
                                     <span class="pull-left">Ver Detalles</span>
@@ -300,7 +268,10 @@
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
+                            
                         </div>
+                        
+                        -------------------->
                     </div>
                 </div>
                 <!-- /.row -->

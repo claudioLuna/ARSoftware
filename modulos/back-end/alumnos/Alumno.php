@@ -23,7 +23,7 @@
 	$_nombre = $adm1->listarAdministradorins2($usuario);
 	
 	#Paginación	
-	$limit=15;		
+	$limit=5;		
 
 	if(isset($_GET['pag']))
 	{
