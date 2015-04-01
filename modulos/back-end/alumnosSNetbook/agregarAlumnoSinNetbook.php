@@ -56,12 +56,15 @@
 	include_once($docRootSitio."modelo/Curso.php");
 	include_once($docRootSitio."modelo/Turno.php");
 	include_once($docRootSitio."modelo/DatosEscuela.php");	
+	include_once($docRootSitio."modelo/Administrador.php");
 	
 	$alu1 = new Alumno();
 	$mar1 = new Marca();
 	$cur1 = new Curso();
 	$tur1 = new Turno();
 	$datoesc = new DatosEscuela();	
+	$adm1 = new Administrador();
+	
 	$usuario = $_SESSION["nombreUsuario"];
 	
 	$cur1->setNombreUsuario($usuario);
@@ -69,6 +72,7 @@
 	$_cursos = $cur1->listarCursos();
 	$_turnos = $tur1->listarTurnos();
 	$datoesc->setNombreUsuario($usuario);
+	$_nombre = $adm1->listarAdministradorins2($usuario);
 	$_datos = $datoesc->listarDatosEscuelas($offset,$limit,$campoOrder,$order);	
 	
 	#Curso
@@ -150,7 +154,16 @@
                  </button>
 	              <div onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/administradores/principalAdministradorAR.php')"; style="height: 52px; width:225px;  max-width: 100%; background: #FFFFFF; background-image: url(<?php echo $httpHostSitio?>plantilla/imagenes/logotipoe.png);"></div>
 	            </div>
-          
+                       	<ul class="nav navbar-right top-nav">
+	<li class="dropdown">
+                    <a href="principalAdministrador.php" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_nombre['nombre'].' '.$_nombre['apellido']?> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="<?php echo $httpHostSitio?>utiles/ctrlLogout.php"><i class="fa fa-fw fa-power-off"></i> Salir</a>
+                        </li>
+                    </ul>
+                </li>
+	</ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
             <?php include_once($docRootSitio."utiles/menuAdministradorAR.php");?>    

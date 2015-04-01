@@ -33,8 +33,7 @@
 
     <title>ARSoftware</title>
 <?php 
-	include_once($_SERVER["DOCUMENT_ROOT"]."/Virtual/utiles/principal.php");
-	include_once($_SERVER["DOCUMENT_ROOT"]."/escuelas/utiles/headerAdmin.php");		
+	include_once($_SERVER["DOCUMENT_ROOT"]."/arsoftware/utiles/headerAdmin.php");	
 	include_once($docRootSitio."modelo/Administrador.php");
 		
 	$adm1 = new Administrador();
@@ -91,7 +90,7 @@
                     <a href="principalAdministrador.php" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_nombre['nombre'].' '.$_nombre['apellido']?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="/Virtual/utiles/ctrlLogout.php"><i class="fa fa-fw fa-power-off"></i> Salir</a>
+                            <a href="<?php echo $httpHostSitio?>utiles/ctrlLogout.php"><i class="fa fa-fw fa-power-off"></i> Salir</a>
                         </li>
                     </ul>
                 </li>

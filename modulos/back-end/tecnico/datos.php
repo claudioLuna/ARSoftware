@@ -93,7 +93,7 @@ else
         </div>
 		<!--alumno-->
 		<div class="form-group">
-        <label>Numero:*</label><input class="form-control" readonly="readonly();" readonly="readonly();" name="nombre" value="<?php echo $_alumno['nombre']?>">
+        <label>Nombre:*</label><input class="form-control" readonly="readonly();" readonly="readonly();" name="nombre" value="<?php echo $_alumno['nombre'].' '.$_alumno['apellido']?>">
         </div>
 		<!--Curso-->
 		<div class="form-group">

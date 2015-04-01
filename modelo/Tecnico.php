@@ -282,7 +282,7 @@ class Tecnico{
 		global $docRootSitio;		
 		$this->setNombreUsuario($usuario);
 		
-		$q = "SELECT SQL_CALC_FOUND_ROWS * FROM tecnico WHERE nombreUsuario='{$this->getNombreUsuario()}' AND estado!=3";
+		 $q = "SELECT SQL_CALC_FOUND_ROWS * FROM tecnico WHERE nombreUsuario='{$this->getNombreUsuario()}' AND estado!=3";
 				
 		if($campoOrder!= "" && $order!=""){			
 			${$campoOrder} = $campoOrder;			

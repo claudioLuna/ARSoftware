@@ -69,17 +69,16 @@
     	
     	
     	$ticketsVencen = $fecha->compararFechas($_stecnicos[$i]['fecha'],$segunda);
-    	
-if($ticketsVencen >= 20)
+    
+
+if($ticketsVencen >= 20 && $_stecnicos[$i]['estado']=1)
 {
 
 	$a[]=$ticketsVencen;
 	$diasFaltantes= 30-$ticketsVencen; 
 	
-	//echo "$diasFaltantes dias para el vencimiento del tickets "; echo $_stecnicos[$i]['idreclamo'];
-	//echo "<br>";
-	//echo count($a);
-}
+   
+	}
 
     }
     
@@ -291,7 +290,7 @@ if($ticketsVencen >= 20)
                                 </div>
                             </div>
                             
-                            <a href="#">
+                            <a href="<?php echo $httpHostSitio?>/modulos/back-end/tecnico/listarTecnicosVencen.php">
                                 <div class="panel-footer">
                                     <span class="pull-left">Ver Detalles</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

@@ -55,6 +55,7 @@
     include_once($docRootSitio."modelo/Administrador.php");	
 	include_once($docRootSitio."modelo/Tecnico.php");			
 	include_once($docRootSitio."modelo/EstadosTecnico.php");
+	include_once($docRootSitio."modelo/Fecha.php");
 	
 	$adm1 = new Administrador();
 	$usuario = $_SESSION["nombreUsuario"];
@@ -64,9 +65,10 @@
 	#nuevo objeto
 	$tec1 = new Tecnico();
 	$est1 = new Estado();	
-
-	$_tecnicos = $tec1->listarTecnicos($offset,$limit,$campoOrder,$order,$usuario);	
+	$fecha = new Fecha();
 	
+	$_tecnicos = $tec1->listarTecnicos($offset,$limit,$campoOrder,$order,$usuario);	
+	$_stecnicos = $tec1->listarTecnicosPrincipal($offset,$limit,$campoOrder,$order,$usuario);
 	#getCantRegistros
 	$cantRegistros = $tec1->getCantRegistros();	
 	$cantPaginas = ceil($cantRegistros/$limit);
@@ -179,7 +181,7 @@
 			$order = "DESC";
 		}		
 
-	if(count($_tecnicos)){?>	
+	if(count($_stecnicos)){?>	
                     <table class="table table-bordered table-hover table-striped">
                         <thead>
                             <tr>
@@ -188,24 +190,31 @@
 								<th><center>Numero De Serie</center></th>
 								<th><center>Marca</center></th>
 								<th><center>Problema</center></th>
-                                <th><center>Fecha</center></th>
-								<th><center>Estado</center></th>
+                                <th><center>Fecha Carga</center></th>
+								<th><center>Vence en:</center></th>
 								<th><center>Estado Anses</center></th>
                                 <th><center>Acciones</center></th>
                             </tr>
                         </thead>
-                               		
-<?php for($i=1;$i<=count($_tecnicos);$i++){			
-						$_estado = $est1->listarEstado($_tecnicos[$i]['estado']);
-			if($i%2==0){
-					$class="class='alt'";
-					$classTh="class='specalt'";
-				}
-				else{
-					$class="";
-					$classTh="class='spec'";
-				}
-		?>		
+ <?php  
+ for($i=1;$i<=count($_stecnicos);$i++)
+    {
+    	$_estado = $est1->listarEstado($_tecnicos[$i]['estado']);
+    	$segunda= date("Y-m-d H:i:s");
+    	
+    	
+    	$ticketsVencen = $fecha->compararFechas($_stecnicos[$i]['fecha'],$segunda);
+    
+
+
+if($ticketsVencen >= 20 && $_stecnicos[$i]['estado']=1)
+{
+
+	$a[]=$ticketsVencen;
+	$diasFaltantes= 30-$ticketsVencen; 
+	
+   ?>
+		
 
 		<tr>			
 			<td><center><?php echo $_tecnicos[$i]['nombreAlumno']?></center></td>
@@ -214,7 +223,7 @@
 			<td><center><?php echo $_tecnicos[$i]['marca']?></center></td>
 			<td><center><?php echo $_tecnicos[$i]['problema']?></center></td>
 			<td><center><?php echo $_tecnicos[$i]['fecha']?></center></td>
-			<td><center><?php echo  $_estado['nombre']?></td></center>
+			<td style="color:red;"><center><?php echo  $diasFaltantes ?> dias</td></center>
 			<td><center><?php echo $_tecnicos[$i]['idreclamo']?></center></td>
 			<td><center>
 			<form method="post" action="modificarTecnico.php">
@@ -232,6 +241,8 @@
 			</center></td>
 		</tr>
 	<?php }}
+
+    }
 	else{?>
 
 			<div class="alert alert-info">
