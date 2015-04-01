@@ -118,7 +118,7 @@
                     <a href="principalAdministrador.php" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_administrador['nombre'].' '.$_administrador['apellido']?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="/Virtual/utiles/ctrlLogout.php"><i class="fa fa-fw fa-power-off"></i> Salir</a>
+                            <a href="<?php echo $httpHostSitio?>utiles/ctrlLogout.php"><i class="fa fa-fw fa-power-off"></i> Salir</a>
                         </li>
                     </ul>
                 </li>
