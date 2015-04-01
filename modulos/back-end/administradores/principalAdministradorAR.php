@@ -157,7 +157,7 @@ if($ticketsVencen >= 20 && $_stecnicos[$i]['estado']=1)
                     <a href="principalAdministrador.php" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_nombre['nombre'].' '.$_nombre['apellido']?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="/escuelas/utiles/ctrlLogout.php"><i class="fa fa-fw fa-power-off"></i> Salir</a>
+                            <a href="<?php echo $httpHostSitio?>utiles/ctrlLogout.php"><i class="fa fa-fw fa-power-off"></i> Salir</a>
                         </li>
                     </ul>
                 </li>
@@ -199,7 +199,7 @@ if($ticketsVencen >= 20 && $_stecnicos[$i]['estado']=1)
                     <div class="col-lg-12">
                         <div class="alert alert-info alert-dismissable" id="emergente" onclick="ocultar();">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i>  <strong>Cual es el estado de los tickets?</strong>Entra aqui <a href="https://servicioscorp.anses.gob.ar/clavelogon/logon.aspx" class="alert-link">Aplicativo ANSES</a> para comprobarlo.
+                            <i class="fa fa-info-circle"></i>  <strong>Cual es el estado de los tickets?</strong>Entra aqui <a href="https://servicioscorp.anses.gob.ar/clavelogon/logon.aspx" class="alert-link" target="_blank">Aplicativo ANSES</a> para comprobarlo.
                         </div>
                     </div>
                 </div>

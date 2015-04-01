@@ -28,7 +28,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 	
-    <title>Signin Template for Bootstrap</title>
+    <title>ARSoftware</title>
 <?php	include_once($_SERVER["DOCUMENT_ROOT"]."/arsoftware/utiles/principal.php");?>
 
     <link href="<?php echo $httpHostSitio?>bootstrap/css/bootstrap.min.css" rel="stylesheet">
