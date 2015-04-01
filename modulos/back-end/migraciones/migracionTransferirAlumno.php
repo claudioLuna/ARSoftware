@@ -176,11 +176,15 @@ include_once($docRootSitio."modelo/DatosEscuela.php");
 	                     <button type="button" class="btn btn-warning" onclick="location =('<?php echo $httpHostSitio?>modulos/back-end/migraciones/formSesion.php')">Comodatos</button>
 	                    <button type="button" class="btn btn-danger" onclick="location =('<?php echo $httpHostSitio?>modulos/back-end/migraciones/formSesion.php')">Cesion Definitiva</button>
 	
-	                </p>
-       	<form  action="<?php echo $httpHostSitio?>modulos/back-end/migraciones/formMigracionTransferir.php" method="post" enctype="multipart/form-data" target="_blank" >
+	       </p>
+
+       	
+        <form  action="<?php echo $httpHostSitio?>modulos/back-end/migraciones/formMigracionTransferir.php" method="post" enctype="multipart/form-data" target="_blank" >
      	<input type="hidden" name="datosEscuela" value="<?php echo $_escuela['id']?>" /><br>
-		<!--Escuela-->
-		<div class="form-group">
+		
+        <!--Escuela-->
+		
+        <div class="form-group">
 		<label>Escuela Origen:*</label><input class="form-control" readonly="readonly();" name="datosEscuelaNombre" value="<?php echo $_escuela['nombreEscuela']?>">
         </div>
 		<!--cuilAlumno-->
