@@ -41,7 +41,8 @@
 	$usuario = $_SESSION["nombreUsuario"];
 	$mar1->setNombreUsuario($usuario);
 	$_marca = $mar1->listarMarca($_POST['Marca']);	
-
+	$_nombre = $adm1->listarAdministradorins2($usuario);
+	
 	#nombre
 	if($_POST['nombre']){
 		$nombre = $_POST['nombre'];
@@ -76,7 +77,8 @@
 
     <!-- Custom Fonts -->
     <link href="<?php echo $httpHostSitio?>plantilla/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+		<script src="<?php echo $httpHostSitio?>jquery/jquery-1.11.1.js"></script>	
+	<script src="<?php echo $httpHostSitio?>plantilla/js/bootstrap.min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -102,7 +104,16 @@
                    </button>
 	               <div onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/administradores/principalAdministradorAR.php')"; style="height: 52px; width:225px;  max-width: 100%; background: #FFFFFF; background-image: url(<?php echo $httpHostSitio?>plantilla/imagenes/logotipoe.png);"></div>
 	            </div>
-          
+                <ul class="nav navbar-right top-nav">
+	<li class="dropdown">
+                    <a href="principalAdministrador.php" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_nombre['nombre'].' '.$_nombre['apellido']?> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="<?php echo $httpHostSitio?>utiles/ctrlLogout.php"><i class="fa fa-fw fa-power-off"></i> Salir</a>
+                        </li>
+                    </ul>
+                </li>
+	</ul>	
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
             <?php include_once($docRootSitio."utiles/menuAdministradorAR.php");?>    
