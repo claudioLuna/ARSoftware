@@ -58,11 +58,10 @@
    
     $_stecnicos = $stecnico->listarTecnicosPrincipal($offset,$limit,$campoOrder,$order,$usuario);
 	$_nombre = $adm1->listarAdministradorins2($usuario);
-    $_prestamos = $prestamo->listarPrestamos($offset,$limit,$campoOrder,$order);
+	$prestamo->setNombreUsuario($usuario);
+    $_prestamos = $prestamo->listarPrestamos($offset,$limit,$campoOrder,$order,$usuario);
     $_correos = $correo->listarCorreosUsuario($usuario);
-    
-    
-    
+        
     for($i=1;$i<=count($_stecnicos);$i++)
     {
     	$segunda= date("Y-m-d H:i:s");
@@ -82,10 +81,6 @@ if($ticketsVencen >= 20 && $_stecnicos[$i]['estado']=1)
 
     }
     
-
-    
-
-    
 ?> 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo $httpHostSitio?>plantilla/css/bootstrap.min.css" rel="stylesheet">
@@ -103,19 +98,11 @@ if($ticketsVencen >= 20 && $_stecnicos[$i]['estado']=1)
     <link href="<?php echo $httpHostSitio?>js/nuevoAjax.js" rel="stylesheet">
     <link href="<?php echo $httpHostSitio?>js/tecnico.js" rel="stylesheet">
     
-    
-    
-    
     <link href="<?php echo $httpHostSitio?>plantilla/css/plugins/morris.css" rel="stylesheet">
     
     <script src="<?php echo $httpHostSitio?>jquery/jquery-1.11.1.js"></script>
     <script src="<?php echo $httpHostSitio?>/plantilla/js/bootstrap.min.js"></script>
-    
-    
-    
-    
-    
-    
+   
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -143,15 +130,9 @@ if($ticketsVencen >= 20 && $_stecnicos[$i]['estado']=1)
                  
                  <div onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/administradores/principalAdministradorAR.php')"; style="height: 52px; width:225px;  max-width: 100%; background: #FFFFFF; background-image: url(<?php echo $httpHostSitio?>plantilla/imagenes/logotipoe.png);"></div>
                  </div>
-            
-            
-            
-            
-            
+   
             
             <ul class="nav navbar-right top-nav">
-				
-			 
 						  
           	<li class="dropdown">
                     <a href="principalAdministrador.php" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_nombre['nombre'].' '.$_nombre['apellido']?> <b class="caret"></b></a>
@@ -199,15 +180,11 @@ if($ticketsVencen >= 20 && $_stecnicos[$i]['estado']=1)
                     <div class="col-lg-12">
                         <div class="alert alert-info alert-dismissable" id="emergente" onclick="ocultar();">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i>  <strong>Cual es el estado de los tickets?</strong>Entra aqui <a href="https://servicioscorp.anses.gob.ar/clavelogon/logon.aspx" class="alert-link" target="_blank">Aplicativo ANSES</a> para comprobarlo.
+                            <i class="fa fa-info-circle"></i>  <strong>Cual es el estado de los tickets? </strong>Entra aqui <a href="https://servicioscorp.anses.gob.ar/clavelogon/logon.aspx" class="alert-link" target="_blank">Aplicativo ANSES</a> para comprobarlo.
                         </div>
                     </div>
                 </div>
-                
-                
-                
-                
-                <!-- /.row -->
+             <!-- /.row -->
 
                 <div class="row">
                     <div class="col-lg-3 col-md-6">

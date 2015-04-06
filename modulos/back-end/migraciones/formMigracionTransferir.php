@@ -46,6 +46,8 @@
 	include_once($docRootSitio."modelo/DatosEscuela.php");
 	include_once($docRootSitio."modelo/Marca.php");
 	include_once($docRootSitio."modelo/Turno.php");
+	
+	$usuario = $_SESSION["nombreUsuario"];
 
 	$datosesc = new DatosEscuela();
 	$_datos = $datosesc->listarDatosEscuela($_POST['datosEscuela']);
@@ -54,6 +56,7 @@
 	$_alumnos = $alumno->listarAlumnoCuil($_POST['cuilAlumno']);
 
 	$mar1 = new Marca();
+	$mar1->setNombreUsuario($usuario);
 	$_marcas = $mar1->listarMarca($_alumnos['MarcaNetbook']);
 	
 	$Turno= $_alumnos['turno'];

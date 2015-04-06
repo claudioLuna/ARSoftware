@@ -125,7 +125,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-	                <a class="navbar-brand" href="<?php echo $httpHostSitio?>modulos/back-end/administradores/principalAdministradorAR.php">Administradores de Redes</a>
+	                 <div onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/administradores/principalAdministradorAR.php')"; style="height: 52px; width:225px;  max-width: 100%; background: #FFFFFF; background-image: url(<?php echo $httpHostSitio?>plantilla/imagenes/logotipoe.png);"></div>
 	            </div>
             
           	<ul class="nav navbar-right top-nav">

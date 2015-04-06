@@ -81,10 +81,6 @@
 	<script src="<?php echo $httpHostSitio?>jquery/jquery-1.11.1.js"></script>	
 	<script src="<?php echo 	$httpHostSitio?>plantilla/js/bootstrap.min.js"></script>
 	
-	
-	
-	
-	
 	    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	    <!--[if lt IE 9]>
@@ -117,22 +113,11 @@
                     <a href="principalAdministrador.php" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_nombre['nombre'].' '.$_nombre['apellido']?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="/escuelas/utiles/ctrlLogout.php"><i class="fa fa-fw fa-power-off"></i> Salir</a>
+                            <a href="<?php echo $httpHostSitio?>utiles/ctrlLogout.php"><i class="fa fa-fw fa-power-off"></i> Salir</a>
                         </li>
                     </ul>
                 </li>
 	</ul>
-	          
-	          
-	          
-	          
-	          
-	          
-	          
-	          
-	          
-	          
-	          
 	            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 	               <!--Menu----------->
             

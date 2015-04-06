@@ -128,7 +128,10 @@
 
     <!-- Custom Fonts -->
     <link href="<?php echo $httpHostSitio?>plantilla/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+	<script src="<?php echo $httpHostSitio?>jquery/jquery-1.11.1.js"></script>	
+	<script src="<?php echo 	$httpHostSitio?>plantilla/js/bootstrap.min.js"></script>
+	<script src="<?php echo $httpHostSitio?>js/nuevoAjax.js" type="text/javascript"></script>	
+	<script src="<?php echo $httpHostSitio?>js/tecnico.js" type="text/javascript"></script>	
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -271,9 +274,7 @@
 		
 		</form>				
                                 </div>
-                                <div class="text-right">
-                                    <a href="#">Ver Detalles <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>

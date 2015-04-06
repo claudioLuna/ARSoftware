@@ -3,33 +3,13 @@
 
 <head>
 
-<?php //////////////////////////////////////////////////////
-///Copyright 2015  Luna Claudio,Rebolloso Leandro.///
-////////////////////////////////////////////////////
-//
-//This file is part of ARSoftware.
-//ARSoftware is free software; you can redistribute it and/or
-//modify it under the terms of the GNU General Public License
-//as published by the Free Software Foundation; either version 2
-//of the License, or (at your option) any later version.
-//
-//ARSoftware is distributed in the hope that it will be useful,
-//but WITHOUT ANY WARRANTY; without even the implied warranty of
-//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//GNU General Public License for more details.
-//
-//You should have received a copy of the GNU General Public License
-//along with this program; if not, write to the Free Software
-//Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-
-?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-     <title>ARSoftware</title>
+    <title>Administradores de Redes</title>
 <?php
 	include_once($docRootSitio."modelo/Administrador.php");
 	include_once($_SERVER["DOCUMENT_ROOT"]."/arsoftware/utiles/headerAdmin.php");
@@ -99,20 +79,38 @@
 				$alu1->setNombreUsuario($usuario);	
 				$mensajeValidarSerie = $alu1->listarSerie($_POST['numSerie']);
 					if(!$mensajeValidarSerie)
-						{
-							$alu1->agregarAlumno($usuario);		
-							header("location: listarAlumnos.php?insert=1"); 	
-							exit();		
-						}
-					$mensajerReal="Netbook Ya Cargada";
-				}
-			else	
-				{
-				$mensajerReal="Netbook Ya Cargada";
+						//{
+						//$mensajeValidarCargador = $alu1->listarCargadores($_POST['cargador']);	
+						//}
+						//else
+						//{
+						//$mensajerReal="Ese Numero De Serie Ya Esta Cargado";
+						//}
+						//if(!$mensajeValidarCargador)
+							//{
+							//$mensajeValidarBateria = $alu1->listarBateria($_POST['bateria']);	
+							//}
+						//else
+							//{
+							//$mensajerReal="El Cargador Ya Esta Cargado";
+							//}
+						
+						//if($mensajeValidarBateria)
+							//{
+							//$mensajerReal="La Bateria Ya Esta Cargada";	
+							//}
+								//if(!$mensajeValidarCargador AND !$mensajeValidarSerie)
+									//{
+									$alu1->agregarAlumno($usuario);		
+									header("location: listarAlumnos.php?insert=1"); 	
+									exit();		
+						//	}
+		
 				}
 		}
 	
-
+	//include_once($docRootSitio."utiles/ctrlAcceso.php");	
+     //echo $httpHostSitio ;
 ?> 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo $httpHostSitio?>plantilla/css/bootstrap.min.css" rel="stylesheet">
@@ -127,7 +125,7 @@
     <link href="<?php echo $httpHostSitio?>plantilla/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <script src="<?php echo $httpHostSitio?>jquery/jquery-1.11.1.js"></script>	
-	<script src="<?php echo 	$httpHostSitio?>plantilla/js/bootstrap.min.js"></script>
+	<script src="<?php echo $httpHostSitio?>plantilla/js/bootstrap.min.js"></script>
 	<script src="<?php echo $httpHostSitio?>js/nuevoAjax.js" type="text/javascript"></script>	
 	<script src="<?php echo $httpHostSitio?>js/tecnico.js" type="text/javascript"></script>	
     
@@ -154,7 +152,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                   <div onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/administradores/principalAdministradorAR.php')"; style="height: 52px; width:225px;  max-width: 100%; background: #FFFFFF; background-image: url(<?php echo $httpHostSitio?>plantilla/imagenes/logotipoe.png);"></div>
+                    <a class="navbar-brand" href="<?php echo $httpHostSitio?>modulos/back-end/administradores/principalAdministradorAR.php">Administradores de Redes</a>
 	            </div>
   
              	<ul class="nav navbar-right top-nav">
@@ -205,13 +203,24 @@
 	
 		<!--bandera-->
 		<input type="hidden" name="bandera" value="1">		
-			
+		
+	
+		
 		<?php if($mensaje){?>
 		<div class="alert alert-danger">
 			<strong>Error </strong><?php echo $mensaje?>
 		</div>
 		<?php }?>		
-		
+		<?php if($mensajeValidarCargador){?>
+		<div class="alert alert-danger">
+			<strong>Error </strong><?php echo $mensajerReal?>
+		</div>
+		<?php }?>
+		<?php if($mensajeValidarBateria){?>
+		<div class="alert alert-danger">
+			<strong>Error </strong><?php echo $mensajerReal?>
+		</div>
+		<?php }?>
 		<?php if($mensajeValidarSerie){?>
 		<div class="alert alert-danger">
 			<strong>Error </strong><?php echo $mensajerReal?>

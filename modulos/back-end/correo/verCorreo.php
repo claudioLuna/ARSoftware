@@ -148,7 +148,7 @@ $_profesor = $adm1->listarAdministradorins2($profesor);
                     </div>
                 </div>
                 <!-- /.row -->
-		 		     <div class="page-header">
+
 		<?php if($_GET['insert']==1){?>
 			<div class="alert alert-success">
                 <center><strong>El mensaje se envio correctamente.</strong></center>
@@ -160,7 +160,7 @@ $_profesor = $adm1->listarAdministradorins2($profesor);
                 <center><strong>El mensaje se elimino correctamente.</strong></center>
             </div>
 		<?php }?>
-		</div>			
+				
 				   <p>
                  <button type="button" class="btn btn-primary" onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/correo/enviarCorreo.php')" > Enviar Mensaje</button>
 		 	 <input type="button" class="btn btn-success" name="delete" value="Borrar Mensajes"  onclick="setDeleteAction();" />	

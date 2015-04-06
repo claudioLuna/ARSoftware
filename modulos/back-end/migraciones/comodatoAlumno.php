@@ -134,7 +134,7 @@ la Ciudad de <b><?php echo $_datos['ciudad'];?> </b>Provincia de <b><?php echo $
 Señora/Señor <b><?php echo $_alumnos['nombrePadre'].' '.$_alumnos['apellidoPadre'];?></b> .CUIL <b><?php echo $_alumnos['cuilPadre'];?></b>,con domicilio en la calle ..............piso….., dpto….…,de la ciudad
 de <b><?php echo $_datos['ciudad'];?> </b>,Provincia de <b><?php echo $_datos['provincia'];?> </b> ;por sí,como mayor de edad o menor emancipado, o en su carácter
 de madre/padre/tutora/tutor/representante legal de <b><?php echo $_alumnos['nombre'].' '.$_alumnos['apellido'];?></b> Cuil <b><?php echo $_alumnos['cuil'];?></b>,alumna/o del curso <b><?php echo $curso['nombre'];?></b>, turno <b><?php echo $turnos['nombre'];?></b>, del establecimiento educativo <B><?php echo $_datos['nombreEscuela'];?></B>,sito en la calle <b><?php echo $_datos['domicilioEscuela'];?></b>,
-N°….,de la ciudad de <b><?php echo $_datos['ciudad'];?> </b>provincia de <b><?php echo $_datos['provincia'];?> </b>, en adelante“EL COMODATARIO”,
+de la ciudad de <b><?php echo $_datos['ciudad'];?> </b>provincia de <b><?php echo $_datos['provincia'];?> </b>, en adelante“EL COMODATARIO”,
 ambos mayores de edad y hábiles para este acto,convienen en celebrar el presente CONTRATO DE COMODATO,sujeto a las siguientes cláusulas y condiciones:</p>
 
 <b>PRIMERA:</b> EL COMODANTE da en COMODATO al COMODATARIO, y éste acepta,una laptop educativa Modelo <b><?php echo $_marcas['nombre'];?></b> Numero de Serie <b><?php echo $_alumnos['numSerie'];?></b>.<br><br>

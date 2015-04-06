@@ -321,9 +321,9 @@ class DatosEscuela{
 		}
 		
 		$i1 = new Iterador();
-		$_clientes = $i1->iterarObjetos($result);	
+		$_escuelas = $i1->iterarObjetos($result);	
 			
-		return $_clientes;	
+		return $_escuelas;	
 	}
 	
 	public function listarEscuelas(){		
@@ -354,9 +354,9 @@ class DatosEscuela{
 		}
 		
 		$i1 = new Iterador();
-		$_clientes = $i1->iterarObjetos($result);	
+		$_escuelas = $i1->iterarObjetos($result);	
 			
-		return $_clientes;	
+		return $_escuelas;	
 	}
 	
 	public function listarEscuela(){		

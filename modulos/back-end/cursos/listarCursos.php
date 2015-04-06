@@ -111,7 +111,7 @@
 
          </div>
             <!-- /.container-fluid ------------------------------------------------------------------------------------------------------>
-  <div class="row">
+			<div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             Cursos
@@ -122,8 +122,8 @@
                             </li>
                         </ol>
                     </div>
-                </div>
-						<div class="page-header">
+             </div>
+
 		<?php if($_GET['insert']==1){?>
 			<div class="alert alert-success">
                 <strong>El curso se agrego exitosamente.</strong>

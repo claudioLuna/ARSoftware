@@ -92,19 +92,6 @@
 	else{
 		$direccion = $_alumno['direccion'];
 	}
-
-	#curso
-	if($_POST['escuela']){
-		$_escuela = $datoesc->listarEscuela($_POST['escuela']);
-		}
-	else{
-		if($_alumno['nombreEscuela'] != ''){
-			$_escuela = $datoesc->listarEscuela($_alumno['nombreEscuela']);
-		}
-		else{
-			$_escuela['nombre'] = "Elija una Escuela para el alumnos";
-		}
-	}
 	
 	#curso
 	if($_POST['curso']){
@@ -173,9 +160,26 @@
 	else{		
 		$numSerie = $_alumno['numSerie'];
 	}
+	
+	#cargador
+	if($_POST['cargador']){
+		$cargador = $_POST['cargador'];
+	}
+	else{		
+		$cargador = $_alumno['cargador'];
+	}
+	
+	#bateria
+	if($_POST['bateria']){
+		$bateria = $_POST['bateria'];
+	}
+	else{		
+		$bateria = $_alumno['bateria'];
+	}
+
 	#bandera
 	if($_POST["bandera"]){				
-	$mensaje = $alu1->validarAlumno($_POST);
+	$mensaje = $alu1->validarAlumnoModificar($_POST);
 		if(!$mensaje){						
 			$update = $alu1->modificarAlumno();	
 			header("location: listarAlumnos.php?update=$update");	
@@ -290,8 +294,6 @@
 		<strong>Error </strong><?php echo $mensaje?>
 	</div> 
 		<?php }?>	
-	//include_once($docRootSitio."utiles/ctrlAcceso.php");	
-     //echo $httpHostSitio ;
 		
 		<!--alumno-->
 		<div class="form-group">
@@ -309,14 +311,6 @@
 		<div class="form-group">
         <label>Direccion:*</label><input class="form-control"  name="direccion" value="<?php echo $direccion?>">
         </div>
-		<!--Escuela-->
-		<label>Escuela: *</label> 
-		<select class="form-control" name="escuela">
-            <option selected value="<?php echo $_escuela['nombreEscuela']?>"><?php echo $_escuela['nombreEscuela']?></option>
-			<?php for($i=1;$i<=count($_escuelas);$i++){?>
-			<option value="<?php echo $_escuelas[$i]['nombreEscuela']?>"><?php echo $_escuelas[$i]['numeroEscuela'].' - '.$_escuelas[$i]['nombreEscuela']?></option>
-		<?php }?>
-		</select>
 		<!--Curso-->
 		<label>Curso: *</label> 
 		<select class="form-control" name="curso">
@@ -357,7 +351,12 @@
 		<div class="form-group">
         <label>Numero De Serie:*</label><input class="form-control"  name="numSerie" value="<?php echo $numSerie?>">
         </div>
-		
+		<div class="form-group">
+        <label>Cargador:*</label><input class="form-control"  name="cargador" value="<?php echo $cargador?>">
+        </div>
+		<div class="form-group">
+        <label>Bateria:*</label><input class="form-control"  name="bateria" value="<?php echo $bateria?>">
+        </div>
 		<!--submit-->
 		<input type="submit"  class="btn btn-success" value="Modificar"> * Campos obligatorios
 	

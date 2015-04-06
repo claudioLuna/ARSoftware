@@ -161,14 +161,11 @@ include_once($docRootSitio."modelo/Administrador.php");
                                 <i class="fa fa-dashboard"></i> Netbooks
                             </li>
                         </ol>
-                        
-                        
-                    
+                  
                     </div>
                 </div>
                 <!-- /.row -->
 				
-					<div class="page-header">
 		<?php if($_GET['insert']==1){?>
 			<div class="alert alert-success">
                 <strong>La Netbook Se Agrego Exitosamente.</strong>
@@ -186,7 +183,6 @@ include_once($docRootSitio."modelo/Administrador.php");
                 <strong>La Netbook Se eliminó Exitosamente.</strong>
             </div>
 		<?php }?>
-	</div>
 				
                 <p>
      <button type="button" class="btn btn-primary" onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/netescuela/agregarNetbook.php')" > Agregar Maquina Uso Escolar</button>	
@@ -196,7 +192,7 @@ include_once($docRootSitio."modelo/Administrador.php");
 	
 					</p> 
 	               
-	            <hr>
+
  </p>
     
     <!-- /#wrapper -->
@@ -235,7 +231,7 @@ include_once($docRootSitio."modelo/Administrador.php");
 			 <?php }								
 			else{?>
 			<div class="alert alert-info">
-                    <center><strong>Aviso! </strong> No existen alumnos cargados.</center>
+                    <center><strong>Aviso! </strong> No existen Netbook cargadas.</center>
     </div>
 	<?php }?>
                

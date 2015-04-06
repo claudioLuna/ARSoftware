@@ -92,7 +92,7 @@ include_once($docRootSitio."modelo/DatosEscuela.php");
     <link href="<?php echo $httpHostSitio?>plantilla/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <script src="<?php echo $httpHostSitio?>jquery/jquery-1.11.1.js"></script>	
-	<script src="<?php echo 	$httpHostSitio?>plantilla/js/bootstrap.min.js"></script>
+	<script src="<?php echo $httpHostSitio?>plantilla/js/bootstrap.min.js"></script>
     
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

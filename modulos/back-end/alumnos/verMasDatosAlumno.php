@@ -158,6 +158,23 @@
 	else{		
 		$numSerie = $_alumno['numSerie'];
 	}
+	
+	#cargador
+	if($_POST['cargador']){
+		$cargador = $_POST['cargador'];
+	}
+	else{		
+		$cargador = $_alumno['cargador'];
+	}
+	
+	#bateria
+	if($_POST['bateria']){
+		$bateria = $_POST['bateria'];
+	}
+	else{		
+		$bateria = $_alumno['bateria'];
+	}
+	
 	#bandera
 	if($_POST["bandera"]){				
 	$mensaje = $alu1->validarAlumno($_POST);
@@ -323,7 +340,12 @@
 		<div class="form-group">
         <label>Numero De Serie:*</label><input class="form-control" readonly="readonly();"   name="numSerie" value="<?php echo $numSerie?>">
         </div>
-		
+		<div class="form-group">
+        <label>Cargador:*</label><input class="form-control"  name="cargador" value="<?php echo $cargador?>">
+        </div>
+		<div class="form-group">
+        <label>Bateria:*</label><input class="form-control"  name="bateria" value="<?php echo $bateria?>">
+        </div>
 	
 	</form>		
                 <!-- /.row -->

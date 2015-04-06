@@ -166,7 +166,7 @@
                     </div>
                 </div>
                 <!-- /.row -->
-					<div class="page-header">
+	
 		<?php if($_GET['insert']==1){?>
 			<div class="alert alert-success">
                 <strong>Los datos se agregaron exitosamente.</strong>
@@ -184,7 +184,7 @@
                 <strong>La escuela se Elimino exitosamente.</strong>
             </div>
 		<?php }?>
-	</div>	
+		
 	<?php
 	if($_datos!='')
 	{
@@ -195,7 +195,8 @@
 		?>
            <p>
 	<button type="button" class="btn btn-primary" onclick="location =('<?php echo $httpHostSitio?>modulos/back-end/datosEscuelas/agregarDatosEscuelas.php')" >  Agregar Datos</button>
-         </p>
+         
+</p>
     <?php
 	}    
 	?>
@@ -203,6 +204,7 @@
 								
 			?>   
 			<center> 
+			
           <table class="table table-bordered table-hover table-striped">
           
                                         <thead>

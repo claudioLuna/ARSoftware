@@ -29,6 +29,7 @@ class Prestamo{
 	private $fechaDesde;
 	private $fechaHasta;
 	private $alumno;
+	private $nombreUsuario;
 	
 	public function Netbook(){}
 	
@@ -79,7 +80,14 @@ class Prestamo{
 	public function getNombre(){
 		return $this->nombre;
 	}
-	
+		
+	#nombreUsuario
+	public function setNombreUsuario($nombreUsuario){
+		$this->nombreUsuario = mysql_real_escape_string(strip_tags(trim($nombreUsuario)));
+	}
+	public function getNombreUsuario(){
+		return $this->nombreUsuario;
+	}
 	public function getCantRegistros(){
 		$q = "SELECT FOUND_ROWS() as cantidad";
 		
@@ -133,11 +141,12 @@ class Prestamo{
 	}	
 }
 			
-	public function listarPrestamo($Prestamo){
+	public function listarPrestamo($Prestamo,$usuario){
 		global $docRootSitio;		
 		$this->setId($Prestamo);
-				
-		$q = "SELECT * FROM prestamo WHERE id='{$this->getId()}' LIMIT 1";
+		$this->setNombreUsuario($usuario);
+		
+		$q = "SELECT * FROM prestamo WHERE id='{$this->getId()}' AND nombreUsuario='{$this->getNombreUsuario()}'";
 	
 		try{
 			$result = mysql_query($q);
@@ -160,7 +169,7 @@ class Prestamo{
 	public function listarPrestamos($offset="",$limit="",$campoOrder="",$order=""){		
 		global $docRootSitio;		
 		
-		$q = "SELECT SQL_CALC_FOUND_ROWS * FROM prestamo WHERE estado = '1'";
+		$q = "SELECT SQL_CALC_FOUND_ROWS * FROM prestamo WHERE estado = '1' AND nombreUsuario='{$this->getNombreUsuario()}'";
 				
 		if($campoOrder!= "" && $order!=""){			
 			${$campoOrder} = $campoOrder;			
@@ -226,8 +235,8 @@ class Prestamo{
 	public function agregarPrestamo(){		
 	global $docRootSitio;   			
  	
-	$q="INSERT INTO prestamo (id,numSerie,curso,fechaDesde,fechaHasta,nombre,estado) "
-			."VALUES ('','{$this->getNumSerie()}','{$this->getCurso()}','{$this->getFechaDesde()}','{$this->getFechaHasta()}','{$this->getNombre()}','1');";
+	$q="INSERT INTO prestamo (id,numSerie,curso,fechaDesde,fechaHasta,nombre,estado,nombreUsuario) "
+			."VALUES ('','{$this->getNumSerie()}','{$this->getCurso()}','{$this->getFechaDesde()}','{$this->getFechaHasta()}','{$this->getNombre()}','1','{$this->getNombreUsuario()}');";
 
 	try {			
 		$result = mysql_query($q);

@@ -193,7 +193,7 @@
 	                  
 	                    <button type="button" class="btn btn-primary" onclick="location =('<?php echo $httpHostSitio?>modulos/back-end/consultas/principalConsultaNet.php')" >Netbook Serie</button>
 	                    <button type="button" class="btn btn-success" onclick="location =('<?php echo $httpHostSitio?>modulos/back-end/consultas/principalConsultaCurso.php')" >Netbook Curso</button> 	                    
-	                    <button type="button" class="btn btn-warning" onclick="location =('<?php echo $httpHostSitio?>modulos/back-end/consultas/principalConsultaTotal.php')" >Netbook Total </button>
+	                 <!--   <button type="button" class="btn btn-warning" onclick="location =('<?php echo $httpHostSitio?>modulos/back-end/consultas/principalConsultaTotal.php')" >Netbook Total </button> --->
 	                    
 	
 	                    

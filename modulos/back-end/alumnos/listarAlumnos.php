@@ -33,13 +33,7 @@
 
 	#Listar Nombre Usuario
 	$_nombre = $adm1->listarAdministradorins2($usuario);
-//$_imagenes = $img1->listarImagenes45($RegistrosAEmpezar,$limit);
-//$NroRegistros = $img1->getCantRegistros();		
 
-
-				
-//include_once($docRootSitio."utiles/ctrlAcceso.php");	
-     //echo $httpHostSitio ;
 ?> 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo $httpHostSitio?>plantilla/css/bootstrap.min.css" rel="stylesheet">
@@ -126,7 +120,7 @@
                         </ol>
                     </div>
                 </div> 
-                	<div class="page-header">
+  
 		<?php if($_GET['insert']==1){?>
 			<div class="alert alert-success">
                 <strong>El Alumno Se Agrego Exitosamente.</strong>
@@ -144,7 +138,7 @@
                 <strong>El Alumno Se eliminó de la Base de Datos.</strong>
             </div>
 		<?php }?>
-	</div>	
+	
 		<p>
                  <button type="button" class="btn btn-primary" onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/alumnos/agregarAlumno.php')" > Agregar Alumnos</button>
          </p>				

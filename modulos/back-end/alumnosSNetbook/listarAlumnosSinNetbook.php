@@ -28,7 +28,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ARSoftware</title>
+	<title>ARSoftware</title>
 <?php
 #Paginación	
 	$limit=25;		
@@ -88,6 +88,10 @@
     <!-- Custom Fonts -->
     <link href="<?php echo $httpHostSitio?>plantilla/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+	<script src="<?php echo $httpHostSitio?>jquery/jquery-1.11.1.js"></script>	
+	<script src="<?php echo 	$httpHostSitio?>plantilla/js/bootstrap.min.js"></script>
+	<script src="<?php echo $httpHostSitio?>js/nuevoAjax.js" type="text/javascript"></script>	
+	<script src="<?php echo $httpHostSitio?>js/tecnico.js" type="text/javascript"></script>	
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -153,7 +157,6 @@
 			
 	   <!-- /.row -->
 	   
-	<div class="page-header">
 		<?php if($_GET['insert']==1){?>
 			<div class="alert alert-success">
                 <strong>El Alumno Se Agrego Exitosamente.</strong>
@@ -171,7 +174,7 @@
                 <strong>El Alumno Se eliminó de la Base de Datos.</strong>
             </div>
 		<?php }?>
-	</div>
+	
 		<p>
                  <button type="button" class="btn btn-primary" onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/alumnosSNetbook/agregarAlumnoSinNetbook.php')" > Agregar Alumnos Sin Netbook</button>
             </p>

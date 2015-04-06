@@ -46,6 +46,7 @@
 	#Variable
 	$usuario = $_SESSION["nombreUsuario"];
     $_nombre = $adm1->listarAdministradorins2($usuario);
+	$pre1->setNombreUsuario($usuario);
 	$_prestamos = $pre1->listarPrestamos($offset,$limit,$campoOrder,$order);	
 	
 	#getCantRegistros
@@ -159,14 +160,16 @@
 			<div class="alert alert-success">
                 <strong>La Netbook Se Devolvio Exitosamente.</strong>
             </div>
-		<?php }?>	 
+		<?php }?>
+
+
 	 <p>
 	
 	                <button type="button" class="btn btn-primary" onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/netescuela/listarNetbooks.php')" > Remanente Netbook</button>	
 					<button type="button" class="btn btn-success" onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/prestamo/listarPrestamos.php')" > Prestamos Netbook</button>	
 					<button type="button" class="btn btn-warning" onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/marcas/listarMarcas.php')" > Marcas</button>	 
 					 <button type="button" class="btn btn-danger" onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/prestamo/agregarPrestamo.php')" > Cargar Prestamo</button>
-	             <hr>       
+	                   
 	    </p>
          <?php
 	if(!isset($_GET['order']) || $_GET['order']=="DESC"){
@@ -231,7 +234,7 @@
 					<center><?php echo $_prestamos[$i]['numSerie']?></center>
 				</td>	
 				<td>
-					<center><?php echo $_nombre['nombre']?></center>
+					<center><?php echo $_nombre['nombre'].' '.$_nombre['apellido']?></center>
 				</td>
 				<td>
 					<center><?php echo $_prestamos[$i]['fechaDesde']?></center>

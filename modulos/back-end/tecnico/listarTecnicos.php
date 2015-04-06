@@ -155,7 +155,6 @@
                 </div> 
 					
 	   <!-- /.row -->
-	<div class="page-header">
 		<?php if($_GET['insert']==1){?>
 				<div class="alert alert-success">
                 <strong>El Servicio Tecnico Se Cargo Exitosamente.</strong>
@@ -167,7 +166,7 @@
                 <strong>El Servicio Tecnico Se Modificó Exitosamente.</strong>
                 </div>
 		<?php }?>
-	</div>	
+	
 	<p>
                  <button type="button" class="btn btn-primary" onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/tecnico/agregarTecnico.php')" > Cargar Netbook Servicio Tecnico</button>
         </p>

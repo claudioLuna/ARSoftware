@@ -150,7 +150,7 @@
 			$pre1->setFechaDesde($_POST['fechaDesde']);
 			$pre1->setFechaHasta($_POST['fechaHasta']);	
 			$pre1->setNombre($_POST['alumno']);
-			
+			$pre1->setNombreUsuario($usuario);
 			
 			$alu1->modificarEstadoNetbook($_POST['numSerie']);
 			$alu1->modificarEstadoAlumno($_POST['alumno']);			

@@ -23,7 +23,7 @@
 	$_nombre = $adm1->listarAdministradorins2($usuario);
 	
 	#Paginación	
-	$limit=5;		
+	$limit=15;		
 
 	if(isset($_GET['pag']))
 	{
@@ -95,7 +95,11 @@ if($Res>0) $PagUlt=floor($PagUlt)+1;
 												<td><center><?php echo $_alumnos[$i]['numSerie'];?></center></td>
 												<td <?php echo $classTh?> style="color:<?php echo $color?>;"><center><?php echo $_alumnos[$i]['estadoNetbook'];?></center></td>
 											<td><center>
-					<div>	
+					<div>
+				<form method="post" action="modificarAlumno.php">
+							<input type="hidden" name="Alumno" value="<?php echo $_alumnos[$i]['id']?>">
+							<input type="hidden" class="btn btn-primary" value="Editar Oculto">
+						</form>					
 					<form method="post" action="modificarAlumno.php">
 							<input type="hidden" name="Alumno" value="<?php echo $_alumnos[$i]['id']?>">
 							<input type="submit" class="btn btn-primary" value="Editar">

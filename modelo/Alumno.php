@@ -561,6 +561,78 @@ class Alumno{
 	
 }	
 	
+	public function validarAlumnoModificar($_post){	
+	$this->setAlumno($_post);
+		
+	if($this->getNombre() == ''){
+		$mensaje = "Debes Escribir El <strong>Nombre</strong> Del Alumno.";	
+		return $mensaje;
+	}
+	
+	if($this->getApellido() == ''){
+		$mensaje = "Debes Escribir El <strong>Apellido</strong> Del Alumno.";	
+		return $mensaje;
+	}
+	
+	if($this->getCuil() == ''){
+		$mensaje = "Debes Escribir El <strong>Cuil</strong> Del Alumno.";	
+		return $mensaje;
+	}
+	
+	if(!ereg("([0-9]{2})-([0-9]{8})-([0-9]{1})",$this->getCuil())) 
+	{
+	$mensaje = "El Formato Del <strong>Cuil</strong> Esta Mal.El Formato Debe Ser El Siguiente XX-XXXXXXXX-X";	
+	return $mensaje;
+	}
+	
+	if($this->getCurso() == ''){
+		$mensaje = "Debes Escribir El <strong>Curso</strong> Del Alumno.";	
+		return $mensaje;
+	}
+	
+	if($this->getDireccion() == ''){
+		$mensaje = "Debes Escribir La <strong>Direccion</strong> Del Alumno.";	
+		return $mensaje;
+	}
+		
+	if($this->getTurno() == 0){
+		$mensaje = "Debes Seleccionar El <strong>Turno</strong> Para El Alumno.";	
+		return $mensaje;
+	}	
+	
+	if($this->getNombrePadre() == ''){
+		$mensaje = "Debes Escribir El <strong>Nombre</strong> Del Padre Del Alumno.";	
+		return $mensaje;
+	}
+	
+	if($this->getApellidoPadre() == ''){
+		$mensaje = "Debes Escribir El <strong>Apellido</strong> Del Padre Del Alumno.";	
+		return $mensaje;
+	}
+	
+	if($this->getCuilPadre() == ''){
+		$mensaje = "Debes Escribir El <strong>Cuil</strong> Del Padre Del Alumno.";	
+		return $mensaje;
+	}
+		
+	if(!ereg("([0-9]{2})-([0-9]{8})-([0-9]{1})",$this->getCuilPadre())) 
+	{
+	$mensaje = "El Formato Del <strong>Cuil</strong> Esta Mal. El Formato Debe Ser El Siguiente XX-XXXXXXXX-X";	
+	return $mensaje;
+	}
+	
+	if($this->getMarcaNetbook() == 0){
+		$mensaje = "Debes Seleccionar Un <strong>Marca</strong> De Netbook Para El Alumno.";	
+		return $mensaje;
+	}
+	
+	if($this->getNumSerie() == ''){
+		$mensaje = "Debes Escribir El <strong>Numero De Serie</strong> De La Netbook Del Alumno.";	
+		return $mensaje;
+	}
+		
+}	
+	
 	public function validarAlumnoSinNetbook($_post){	
 	$this->setAlumno($_post);
 		

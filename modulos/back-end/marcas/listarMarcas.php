@@ -144,22 +144,7 @@
                         </ol>
                     </div>
                 </div> 
-			    <p>
-	
-	                  
-	                   
-	                     <button type="button" class="btn btn-primary" onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/netescuela/listarNetbooks.php')" > Remanente Netbook</button>	
-					<button type="button" class="btn btn-success" onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/prestamo/listarPrestamos.php')" > Prestamos Netbook</button>	
-					<button type="button" class="btn btn-warning" onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/marcas/listarMarcas.php')" > Marcas Netbooks</button>	 
-				 <button type="button" class="btn btn-danger" onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/marcas/agregarMarca.php')" > Agregar Marca Netbooks</button>
-				
-	                    
-	                </p>
-                
-			
-			
-    
-	<div class="page-header">
+
 		<?php if($_GET['insert']==1){?>
 			<div class="alert alert-success">
                 <strong>La Marca Se Agrego Exitosamente.</strong>
@@ -175,9 +160,16 @@
                 <strong>La Marca Se Elimino Exitosamente.</strong>
             </div>
 		<?php }?>
-	</div>
-     
-            
+	
+			    <p>
+      
+	                     <button type="button" class="btn btn-primary" onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/netescuela/listarNetbooks.php')" > Remanente Netbook</button>	
+					<button type="button" class="btn btn-success" onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/prestamo/listarPrestamos.php')" > Prestamos Netbook</button>	
+					<button type="button" class="btn btn-warning" onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/marcas/listarMarcas.php')" > Marcas Netbooks</button>	 
+				 <button type="button" class="btn btn-danger" onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/marcas/agregarMarca.php')" > Agregar Marca Netbooks</button>
+				                   
+	                </p>
+        	           
 	<?php
 	if(!isset($_GET['order']) || $_GET['order']=="DESC"){
 			$order = "ASC";
