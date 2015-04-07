@@ -184,6 +184,14 @@ if($ticketsVencen >= 20 && $_stecnicos[$i]['estado']=1)
                         </div>
                     </div>
                 </div>
+				     <div class="row" >
+                    <div class="col-lg-12">
+                        <div class="alert alert-info alert-dismissable" id="emergente" onclick="ocultar();">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <i class="fa fa-info-circle"></i>  <strong>Queres hacer un Backup de tu base de datos? </strong>Hace click aqui <a href="backup.php" class="alert-link" target="_blank">Respaldo</a>.
+                        </div>
+                    </div>
+                </div>
              <!-- /.row -->
 
                 <div class="row">

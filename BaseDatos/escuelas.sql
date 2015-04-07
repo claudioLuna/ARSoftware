@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 01-04-2015 a las 16:22:21
+-- Tiempo de generación: 06-04-2015 a las 22:44:15
 -- Versión del servidor: 5.1.73
 -- Versión de PHP: 5.3.3-7+squeeze19
 
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `administrador` (
 --
 
 INSERT INTO `administrador` (`id`, `nombre`, `apellido`, `Rol`, `nombreUsuario`, `clave`, `token`, `fecha`) VALUES
-(2, 'adminar', '', 1, 'adminar', 'adminar', 'bd1b3012793e4c0babebedf831b7a90b', '2010-08-31 19:03:18');
+(2, 'adminar', '', 1, 'adminar', 'adminar', '674ba59c4435da7403d9eea11b2e9707', '2010-08-31 19:03:18');
 
 -- --------------------------------------------------------
 
@@ -221,6 +221,7 @@ CREATE TABLE IF NOT EXISTS `prestamo` (
   `fechaDesde` date NOT NULL,
   `fechaHasta` date NOT NULL,
   `estado` int(11) NOT NULL,
+  `nombreUsuario` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
