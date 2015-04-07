@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-04-2015 a las 22:44:15
+-- Tiempo de generación: 06-04-2015 a las 23:01:51
 -- Versión del servidor: 5.1.73
 -- Versión de PHP: 5.3.3-7+squeeze19
 
@@ -227,32 +227,6 @@ CREATE TABLE IF NOT EXISTS `prestamo` (
 
 --
 -- Volcar la base de datos para la tabla `prestamo`
---
-
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `profesor`
---
-
-CREATE TABLE IF NOT EXISTS `profesor` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(255) NOT NULL,
-  `materia` int(11) NOT NULL,
-  `horas` int(11) NOT NULL,
-  `telefono` varchar(255) NOT NULL,
-  `direccion` varchar(255) NOT NULL,
-  `revista` int(11) NOT NULL,
-  `correo` varchar(255) NOT NULL,
-  `dni` int(11) NOT NULL,
-  `cuil` varchar(255) NOT NULL,
-  `ingreso` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Volcar la base de datos para la tabla `profesor`
 --
 
 
