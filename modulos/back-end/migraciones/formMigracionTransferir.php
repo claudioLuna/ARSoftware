@@ -156,7 +156,7 @@ correspondientes certificados de seguridad dejando de estar vinculada al servido
 
 
 
- <div style="margin-left:0px;"><img alt="firma2" name="firma2" style="margin-left:50px;" src="<?php echo $httpHostSitio?>modulos/back-end/datosEscuelas/<?php echo $_datos['firmaDirector'];?>" height="120" width="120"></div><br>
+ 
 		
  </div>
  </div>
