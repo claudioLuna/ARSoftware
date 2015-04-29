@@ -76,11 +76,7 @@
 	
 	$cur1->setNombreUsuario($usuario);
 	$_cursos = $cur1->listarCursos();
-	
-	
-	
-	
-	
+
 
 if($_POST['bandera'] && $_POST['busqueda']!=""){
 		$_GET = null;
@@ -128,7 +124,7 @@ if($_POST['bandera'] && $_POST['busqueda']!=""){
     <![endif]-->
     
     	<script src="<?php echo $httpHostSitio?>jquery/jquery-1.11.1.js"></script>	
-	<script src="<?php echo 	$httpHostSitio?>plantilla/js/bootstrap.min.js"></script>
+	<script src="<?php echo $httpHostSitio?>plantilla/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -216,14 +212,8 @@ if($_POST['bandera'] && $_POST['busqueda']!=""){
 		 
 		<input type="submit" value="Buscar" class="btn btn-danger"  />
 		
-		
-		
 		</form>
-	
-                    
-                    
-                    
-                    
+	      
                     </div>
                                        
                 </div> 
@@ -253,6 +243,10 @@ if(count($_consultas)){?>
                                             </tr>
                                         </thead>
                                         <tbody>
+        	<tr>
+			 <a href="reportes.php?Curso=<?php echo $_POST['busqueda']?>" target=_blank><img src="<?php echo $httpHostSitio?>imagenes/pdf.png"></a>
+                               
+			</tr>
         		
 		<?php for($i=1;$i<=count($_consultas);$i++){		
 		
@@ -281,6 +275,7 @@ if(count($_consultas)){?>
 												<th <?php echo $classTh?> style="color:<?php echo $color?>;"><?php echo $_consultas[$i]['estadoNetbook'];?></th>
 											
 			</tr>
+			
 		<?php }}
 
 		
@@ -291,10 +286,11 @@ if(count($_consultas)){?>
                     <center><strong>Aviso! </strong> No existen resultados.</center>
     </div>
 	<?php }?>
-                                      
+	
+                                        
                                 </div>
 								  </tbody>
-                                    </table>
+								  </table>
                                             
          
          

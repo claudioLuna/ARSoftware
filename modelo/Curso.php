@@ -238,7 +238,7 @@ class Curso{
 	public function modificarCurso(){
 		global $docRootSitio;			
 				
-	  echo $q="UPDATE curso SET nombre='{$this->getNombre()}' WHERE id='{$this->getId()}'";	
+	   $q="UPDATE curso SET nombre='{$this->getNombre()}' WHERE id='{$this->getId()}'";	
 		try{
 				$result = mysql_query($q);
 					if(!$result) {

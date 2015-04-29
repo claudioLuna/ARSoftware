@@ -21,7 +21,6 @@
 //You should have received a copy of the GNU General Public License
 //along with this program; if not, write to the Free Software
 //Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-
 ?>
 
     <meta charset="utf-8">
@@ -32,7 +31,6 @@
 
     <title>ARSoftware</title>
 <?php
-
 	include_once($_SERVER["DOCUMENT_ROOT"]."/arsoftware/utiles/principal.php");
 	include_once($docRootSitio."utiles/ctrlAcceso.php");		
     include_once($docRootSitio."modelo/Alumno.php");
@@ -69,16 +67,13 @@
     	
     	$ticketsVencen = $fecha->compararFechas($_stecnicos[$i]['fecha'],$segunda);
     
-
 if($ticketsVencen >= 20 && $_stecnicos[$i]['estado']=1)
 {
-
 	$a[]=$ticketsVencen;
 	$diasFaltantes= 30-$ticketsVencen; 
 	
    
 	}
-
     }
     
 ?> 

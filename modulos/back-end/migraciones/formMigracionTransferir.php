@@ -149,12 +149,18 @@ correspondientes certificados de seguridad dejando de estar vinculada al servido
 
  En prueba de conformidad se firman tres (3) ejemplares de un mismo tenor y a un solo efecto, por el CEDENTE y por el RECEPCIONISTA en la ciudad <B> <?php echo $_datos['ciudad'];?></B> Provincia de <B> <?php echo $_datos['provincia'];?></B>,
  a los <b><?php echo date("d");?> </b> días del mes de <b><?php echo $mees;?> </b> de <b><?php echo date("Y");?></b>.
- 
- 
- </div>
- </div>
- </div>
- </div>
- <br>
   <br>
+  <br>
+<br>
+  <br>
+
+
+
+ <div style="margin-left:0px;"><img alt="firma2" name="firma2" style="margin-left:50px;" src="<?php echo $httpHostSitio?>modulos/back-end/datosEscuelas/<?php echo $_datos['firmaDirector'];?>" height="120" width="120"></div><br>
+		
+ </div>
+ </div>
+ </div>
+ </div>
+
  <div id="palabra" value="" style="border:1px solid #000000; width:140px;height:20px;margin:0 auto;padding:5px;background:#ABE319;font-Size:18px;" onclick="style.display='none',window.print();"><center>Imprimir</center></div>

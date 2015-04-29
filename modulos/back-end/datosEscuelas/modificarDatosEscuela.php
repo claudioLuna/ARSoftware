@@ -32,72 +32,72 @@
 
      <title>ARSoftware</title>
 <?php
-    include_once($_SERVER["DOCUMENT_ROOT"]."/arsoftware/utiles/headerAdmin.php");	
+    include_once($_SERVER["DOCUMENT_ROOT"]."/arsoftware/utiles/headerAdmin.php");   
     include_once($docRootSitio."modelo/Alumno.php");
     include_once($docRootSitio."modelo/Marca.php");
     include_once($docRootSitio."modelo/Curso.php");
     include_once($docRootSitio."modelo/Turno.php");
     include_once($docRootSitio."modelo/Tecnico.php");
     include_once($docRootSitio."modelo/Prestamo.php");
-	include_once($docRootSitio."modelo/Administrador.php");
+    include_once($docRootSitio."modelo/Administrador.php");
     include_once($docRootSitio."modelo/DatosEscuela.php");
     
     $datosesc = new DatosEscuela();
     $adm1 = new Administrador();
-	
-	$usuario = $_SESSION["nombreUsuario"];
+    
+    $usuario = $_SESSION["nombreUsuario"];
     $_datos = $datosesc->listarDatosEscuela($_POST['DatosEscuela']);
     $_nombre = $adm1->listarAdministradorins2($usuario);
-	
+    
     #nombre
     if($_POST['nombreDirector']){
     $nombreDirector = $_POST['nombreDirector'];
     }
     else{
     $nombreDirector = $_datos['nombreDirector'];
-	}
+    }
     
-	#apellido
+    #apellido
     if($_POST['apellidoDirector']){
     $apellidoDirector = $_POST['apellidoDirector'];
     }
     else{
     $apellidoDirector = $_datos['apellidoDirector'];
-	}
-	
-	#dni Director
+    }
+    
+    #dni Director
     
     if($_POST['dniDirector']){
-		$dniDirector = $_POST['dniDirector'];
-	}
-	else{
-    	$dniDirector = $_datos['dniDirector'];
-	}
+        $dniDirector = $_POST['dniDirector'];
+    }
+    else{
+        $dniDirector = $_datos['dniDirector'];
+    }
     
-	#cuil Director
+    #cuil Director
     if($_POST['cuilDirector']){
-		$cuilDirector = $_POST['cuilDirector'];
-	}
-	else{
-		$cuilDirector= $_datos['cuilDirector'];
-	}
-	#numero Escuela
+        $cuilDirector = $_POST['cuilDirector'];
+    }
+    else{
+        $cuilDirector= $_datos['cuilDirector'];
+    }
+    #numero Escuela
     if($_POST['numeroEscuela']){
-		$numeroEscuela = $_POST['numeroEscuela'];
-	}
-	else{
-		$numeroEscuela= $_datos['numeroEscuela'];
-	}
-	#nombre Escuela
+        $numeroEscuela = $_POST['numeroEscuela'];
+    }
+    else{
+        $numeroEscuela= $_datos['numeroEscuela'];
+    }
+    #nombre Escuela
     if($_POST['nombreEscuela']){
     $nombreEscuela = $_POST['nombreEscuela'];
     }
     else{
-		$nombreEscuela= $_datos['nombreEscuela'];
+        $nombreEscuela= $_datos['nombreEscuela'];
     }
     
     #cue Escuela
-	if($_POST['cueEscuela']){
+    if($_POST['cueEscuela']){
     $cueEscuela = $_POST['cueEscuela'];
     }
     else{
@@ -105,7 +105,7 @@
     }
     
     #seccion Escuela
-	if($_POST['seccionEscuela']){
+    if($_POST['seccionEscuela']){
     $seccionEscuela = $_POST['seccionEscuela'];
     }
     else{
@@ -121,34 +121,34 @@
     }
     
     #ciudad
-    	if($_POST['ciudad']){
-		$ciudad = $_POST['ciudad'];
+        if($_POST['ciudad']){
+        $ciudad = $_POST['ciudad'];
     }
     else{
     $ciudad= $_datos['ciudad'];
     }
     
-	#provincia
+    #provincia
     if($_POST['provincia']){
-		$provincia = $_POST['provincia'];
+        $provincia = $_POST['provincia'];
     }
     else{
     $provincia= $_datos['provincia'];
     }
-	
+    
     #bandera
-    		if($_POST["bandera"]){
+            if($_POST["bandera"]){
     
-    		$mensaje = $datosesc->validarDatosEscuela($_POST);
+            $mensaje = $datosesc->validarDatosEscuela($_POST);
     
-    		if(!$mensaje){
-    		$update = $datosesc->modificarDatosEscuela();
-    		header("location: listarDatosEscuelas.php?update=$update");
-    		exit();
-    		}
-    		}
+            if(!$mensaje){
+            $update = $datosesc->modificarDatosEscuela();
+            header("location: listarDatosEscuelas.php?update=$update");
+            exit();
+            }
+            }
     
-    		?>
+            ?>
             <!-- Bootstrap Core CSS -->
     <link href="<?php echo $httpHostSitio?>plantilla/css/bootstrap.min.css" rel="stylesheet">
 
@@ -160,9 +160,9 @@
 
     <!-- Custom Fonts -->
     <link href="<?php echo $httpHostSitio?>plantilla/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	
-	<script src="<?php echo $httpHostSitio?>jquery/jquery-1.11.1.js"></script>	
-	<script src="<?php echo $httpHostSitio?>plantilla/js/bootstrap.min.js"></script>
+    
+    <script src="<?php echo $httpHostSitio?>jquery/jquery-1.11.1.js"></script>  
+    <script src="<?php echo $httpHostSitio?>plantilla/js/bootstrap.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -187,11 +187,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                    </button>
-	              <div onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/administradores/principalAdministradorAR.php')"; style="height: 52px; width:225px;  max-width: 100%; background: #FFFFFF; background-image: url(<?php echo $httpHostSitio?>plantilla/imagenes/logotipoe.png);"></div>
-	            </div>
-          		   <ul class="nav navbar-right top-nav">
-						  
-          	<li class="dropdown">
+                  <div onclick="location = ('<?php echo $httpHostSitio?>modulos/back-end/administradores/principalAdministradorAR.php')"; style="height: 52px; width:225px;  max-width: 100%; background: #FFFFFF; background-image: url(<?php echo $httpHostSitio?>plantilla/imagenes/logotipoe.png);"></div>
+                </div>
+                   <ul class="nav navbar-right top-nav">
+                          
+            <li class="dropdown">
                     <a href="principalAdministrador.php" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_nombre['nombre'].' '.$_nombre['apellido']?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
@@ -199,7 +199,7 @@
                         </li>
                     </ul>
                 </li>
-			 </ul>
+             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <      <!--Menu----------->
             
@@ -232,74 +232,74 @@
                     </div>
                 </div>
                 <!-- /.row -->
-         	<!--form-->
-						<p>
-	
+            <!--form-->
+                        <p>
+    
 <button type="button" class="btn btn-primary" onclick="location =('<?php echo $httpHostSitio?>modulos/back-end/datosEscuelas/listarDatosEscuelas.php')" >  Listar Datos Escuelas</button>
         
-	</p>
-	<form enctype="multipart/form-data" method="post">	
-		<!--Marca-->
-		<input type="hidden" name="Marca" value="<?php echo $datosesc->getId()?>" />
-		<!--id-->
-		<input type="hidden" name="id" value="<?php echo $datosesc->getId()?>" />		
-		
-		<!--bandera-->
-		<input type="hidden" name="bandera" value="1" />	
-			
-		<fieldset>
+    </p>
+    <form enctype="multipart/form-data" method="post">  
+        <!--Marca-->
+        <input type="hidden" name="Marca" value="<?php echo $datosesc->getId()?>" />
+        <!--id-->
+        <input type="hidden" name="id" value="<?php echo $datosesc->getId()?>" />       
+        
+        <!--bandera-->
+        <input type="hidden" name="bandera" value="1" />    
+            
+        <fieldset>
 
-		<?php if($mensaje){?>
-		<div class="alert alert-danger">
+        <?php if($mensaje){?>
+        <div class="alert alert-danger">
                     <strong><?php echo $mensaje?>
                 </div>
  
-		<?php }?>		
-		
-		<!--codigo-->
-		
-		<div class="form-group">
+        <?php }?>       
+        
+        <!--codigo-->
+        
+        <div class="form-group">
         <label>Nombre Director:*</label><input class="form-control"  name="nombreDirector" value="<?php echo $nombreDirector?>">
         </div>
-		<div class="form-group">
+        <div class="form-group">
         <label>Apellido Director:*</label><input class="form-control"  name="apellidoDirector" value="<?php echo $apellidoDirector?>">
         </div>
-		<div class="form-group">
+        <div class="form-group">
         <label>Dni Director: *</label><input class="form-control"  name="dniDirector" value="<?php echo $dniDirector?>">
         </div>
-		<div class="form-group">
+        <div class="form-group">
         <label>Cuil Director: *</label><input class="form-control"  name="cuilDirector" value="<?php echo $cuilDirector?>">
         </div>
         <div class="form-group">
         <label>Numero Escuela: *</label><input class="form-control"  name="numeroEscuela" value="<?php echo $numeroEscuela?>">
         </div>
-		 <div class="form-group">
+         <div class="form-group">
         <label>Nombre Escuela: *</label><input class="form-control"  name="nombreEscuela" value="<?php echo $nombreEscuela?>">
         </div>
-	 <div class="form-group">
+     <div class="form-group">
         <label>CUE Escuela: *</label><input class="form-control"  name="cueEscuela" value="<?php echo $cueEscuela?>">
         </div>
-		
-		<div class="form-group">
+        
+        <div class="form-group">
         <label>Seccion Escuela: *</label><input class="form-control"  name="seccionEscuela" value="<?php echo $seccionEscuela?>">
         </div>
-		<div class="form-group">
+        <div class="form-group">
         <label>Domicilio Escuela: *</label><input class="form-control"  name="domicilioEscuela" value="<?php echo $domicilioEscuela?>">
         </div>
-		
-		<div class="form-group">
+        
+        <div class="form-group">
         <label>Ciudad: *</label><input class="form-control"  name="ciudad" value="<?php echo $ciudad?>">
         </div>
-		
-		<div class="form-group">
+        
+        <div class="form-group">
         <label>Provincia: *</label><input class="form-control"  name="provincia" value="<?php echo $provincia?>">
         </div>
-		
-		
-		<!--submit-->
-		<button type="submit" class="btn btn-success" >Modificar</button> * Campos Obligatorios
-		</fieldset>	
-	</form>		
+        
+        
+        <!--submit-->
+        <button type="submit" class="btn btn-success" >Modificar</button> * Campos Obligatorios
+        </fieldset> 
+    </form>     
         </div><!-- Fin container-fluid ------------------------------------------------------------------------------------------------------>
         <!-- /#page-wrapper -->
 

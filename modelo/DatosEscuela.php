@@ -494,7 +494,7 @@ class DatosEscuela{
 	public function modificarDatosEscuela(){
 		global $docRootSitio;			
 				
-	   $q="UPDATE datosescuela SET nombreDirector='{$this->getNombreDirector()}',apellidoDirector='{$this->getApellidoDirector()}',dniDirector='{$this->getDniDirector()}',cuilDirector='{$this->getDniDirector()}',numeroEscuela='{$this->getNumeroEscuela()}',cueEscuela='{$this->getCiudad()}',domicilioEscuela='{$this->getDomicilioEscuela()}',ciudad='{$this->getCiudad()}',provincia='{$this->getProvincia()}' WHERE id='{$this->getId()}'";	
+	   $q="UPDATE datosescuela SET nombreDirector='{$this->getNombreDirector()}',apellidoDirector='{$this->getApellidoDirector()}',dniDirector='{$this->getDniDirector()}',cuilDirector='{$this->getCuilDirector()}',numeroEscuela='{$this->getNumeroEscuela()}',nombreEscuela='{$this->getNombreEscuela()}',cueEscuela='{$this->getCueEscuela()}',seccionEscuela='{$this->getSeccionEscuela()}',domicilioEscuela='{$this->getDomicilioEscuela()}',ciudad='{$this->getCiudad()}',provincia='{$this->getProvincia()}' WHERE id='{$this->getId()}'";	
 	
 	try{
 				$result = mysql_query($q);

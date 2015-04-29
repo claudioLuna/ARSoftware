@@ -276,6 +276,7 @@ if(count($_consultas)){?>
 												<th <?php echo $classTh?> style="color:<?php echo $color?>;"><?php echo $_consultas[$i]['estadoNetbook'];?></th>
 											
 			</tr>
+			
 		<?php }}
 
 		

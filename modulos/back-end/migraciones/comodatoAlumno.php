@@ -51,15 +51,30 @@
 	
 	$datosesc = new DatosEscuela();$turno = new Turno();
 	$curso = new Curso();
-	$mar1 = new Marca();
 	$alumno = new Alumno();
-	
+	$mar1 = new Marca();
+	$usuario = $_SESSION["nombreUsuario"];	
+
 	$Turno= $_alumnos['turno'];
 	$_datos = $datosesc->listarDatosEscuela($_POST['datosEscuela']);
 	$_alumnos = $alumno->listarAlumnoCuil($_POST['cuilAlumno']);
-	$_marcas = $mar1->listarMarca($_alumnos['MarcaNetbook']);
+	
 	$turnos=$turno->listarTurno($_alumnos['turno']);
 	$curso=$curso->listarCurso($_alumnos['curso']);
+
+
+
+	$mar1->setNombreUsuario($usuario);
+    
+	$_marcas = $mar1->listarMarca($_alumnos['MarcaNetbook']);
+
+
+
+
+
+
+
+
 		
 		$mes = date(F);
 		//meses
@@ -131,9 +146,9 @@
 <p>Entre la Autoridad Educativa Provincial representada en este acto por el Sr./a: <B><?php echo $_datos['nombreDirector'].' '.$_datos['apellidoDirector'];?> </B>,DNI Nº<B> <?php echo $_datos['dniDirector'];?></B>,
 en su carácter de Director/a/Rector/a de la Escuela/Instituto<B> <?php echo $_datos['nombreEscuela'];?></B>, Nº<B> <?php echo $_datos['numeroEscuela'];?></B>,Distrito Escolar:<b><?php echo $_datos['seccionEscuela'];?> </b>de
 la Ciudad de <b><?php echo $_datos['ciudad'];?> </b>Provincia de <b><?php echo $_datos['provincia'];?></b> con domicilio en <b><?php echo $_datos['domicilioEscuela'];?></b>,en adelante “EL COMODANTE” y por la otra la/el
-Señora/Señor <b><?php echo $_alumnos['nombrePadre'].' '.$_alumnos['apellidoPadre'];?></b> .CUIL <b><?php echo $_alumnos['cuilPadre'];?></b>,con domicilio en la calle ..............piso….., dpto….…,de la ciudad
-de <b><?php echo $_datos['ciudad'];?> </b>,Provincia de <b><?php echo $_datos['provincia'];?> </b> ;por sí,como mayor de edad o menor emancipado, o en su carácter
-de madre/padre/tutora/tutor/representante legal de <b><?php echo $_alumnos['nombre'].' '.$_alumnos['apellido'];?></b> Cuil <b><?php echo $_alumnos['cuil'];?></b>,alumna/o del curso <b><?php echo $curso['nombre'];?></b>, turno <b><?php echo $turnos['nombre'];?></b>, del establecimiento educativo <B><?php echo $_datos['nombreEscuela'];?></B>,sito en la calle <b><?php echo $_datos['domicilioEscuela'];?></b>,
+Señora/Señor <b><?php echo $_alumnos['nombrePadre'].' '.$_alumnos['apellidoPadre'];?></b> .CUIL <b><?php echo $_alumnos['cuilPadre'];?></b>,con domicilio en la calle ............................piso….., dpto….…,de la ciudad
+de <b><?php echo $_datos['ciudad'];?> </b>,Provincia de <b><?php echo $_datos['provincia'];?> </b> ;por sí,como mayor de edad o menor emancipado, o en su carácter de madre/padre/tutora/tutor/representante legal de <b><?php echo $_alumnos['nombre'].' '.$_alumnos['apellido'];?></b> Cuil <b><?php echo $_alumnos['cuil'];?></b>,alumna/o
+ del curso <b><?php echo $curso['nombre'];?></b>, turno <b><?php echo $turnos['nombre'];?></b>, del establecimiento educativo <B><?php echo $_datos['nombreEscuela'];?></B>,sito en la calle <b><?php echo $_datos['domicilioEscuela'];?></b>,
 de la ciudad de <b><?php echo $_datos['ciudad'];?> </b>provincia de <b><?php echo $_datos['provincia'];?> </b>, en adelante“EL COMODATARIO”,
 ambos mayores de edad y hábiles para este acto,convienen en celebrar el presente CONTRATO DE COMODATO,sujeto a las siguientes cláusulas y condiciones:</p>
 

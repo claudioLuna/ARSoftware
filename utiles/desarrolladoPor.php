@@ -135,7 +135,9 @@
 					Es un software libre licenciado bajo una licencia GPL v2.
 					Software destinado a ser usado por Administradores de Redes de las
 					instituciones alcanzadas por el plan Conectar Igualdad o  cualquier persona
-					que le sea de utilidad.                                                             
+					que le sea de utilidad. 
+
+                    <br><br><b>San Rafael, Mendoza, Argentina 2015.</b>                                                            
 					<br><br>Contacto: <b>runandebug@gmail.com </b>
                 </div>	
 	

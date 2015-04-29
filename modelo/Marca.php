@@ -110,7 +110,7 @@ class Marca{
 		global $docRootSitio;		
 		$this->setId($Marca);
 				
-		$q = "SELECT * FROM marca WHERE id='{$this->getId()}' AND nombreUsuario='{$this->getNombreUsuario()}'";
+	 $q = "SELECT * FROM marca WHERE id='{$this->getId()}' AND nombreUsuario='{$this->getNombreUsuario()}'";
 	
 		try{
 			$result = mysql_query($q);
