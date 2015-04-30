@@ -448,8 +448,8 @@ class Tecnico{
 		global $docRootSitio;		
 		$this->setNombreUsuario($usuario);
 	
-	$q = "SELECT SQL_CALC_FOUND_ROWS * FROM tecnico WHERE nombreUsuario='{$this->getNombreUsuario()}' and numeroSerie LIKE '$busqueda'";
-		
+	 $q = "SELECT SQL_CALC_FOUND_ROWS * FROM tecnico WHERE nombreUsuario='{$this->getNombreUsuario()}' and numeroSerie LIKE '$busqueda'";
+	
 		if($campoOrder!= "" && $order!=""){			
 			${$campoOrder} = $campoOrder;			
 			$q .= " ORDER BY  ${$campoOrder} $order ";						

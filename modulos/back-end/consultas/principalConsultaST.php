@@ -84,7 +84,7 @@
 	if($_POST['bandera'] && $_POST['busqueda']!=""){
 		$_GET = null;
 		
-		$_consultas = $tec1->listarHistorialTecnico($offset,$limit,$campoOrder,$order,$_POST['busqueda'],$_POST['campoBusqueda'],$usuario);
+		$_consultas = $tec1->listarHistorialTecnico($offset,$limit,$campoOrder,$order,$_POST['busqueda'],$usuario);
 
 		
 		
@@ -244,8 +244,11 @@
 <?php 
 	
 if(count($_consultas)){?>	
-
-	
+	<tr>
+			 <a href="reportesTecnicoHistorial.php?Serie=<?php echo $_POST['busqueda']?>" target=_blank><img src="<?php echo $httpHostSitio?>imagenes/pdf.png"></a>
+                               
+			</tr>
+        	
 		                        <table class="table table-bordered table-hover table-striped">
                                         <thead>
                                             <tr>
