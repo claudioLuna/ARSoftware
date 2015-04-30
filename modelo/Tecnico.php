@@ -346,14 +346,14 @@ class Tecnico{
 	public function agregarTecnico(){		
 	global $docRootSitio;   			
  	
-	$q="INSERT INTO tecnico (id,nombreAlumno,curso,cuil,numeroSerie,marca,problema,fecha,idreclamo,estado,estadoFin,nombreUsuario) "
+	 $q="INSERT INTO tecnico (id,nombreAlumno,curso,cuil,numeroSerie,marca,problema,fecha,idreclamo,estado,estadoFin,nombreUsuario) "
 			."VALUES ('','{$this->getNombreAlumno()}','{$this->getCurso()}','{$this->getCuil()}','{$this->getNumeroSerie()}','{$this->getMarca()}','{$this->getProblema()}','{$this->getFecha()}','{$this->getIdReclamo()}','{$this->getEstado()}','0','{$this->getNombreUsuario()}');";
 	
 	try {			
 		$result = mysql_query($q);
 		$this->setId(mysql_insert_id());
            if(!$result) {
-            throw new Exception("<b>Explicar el error aqu�</b>");
+            throw new Exception("<b>Explicar el error aqui</b>");
             
 			}
 		}
@@ -368,10 +368,11 @@ class Tecnico{
 		return 1;			
 }
 	
-	public function modificarTecnico(){
+	public function modificarTecnico($fecha){
 		global $docRootSitio;			
-				
-	$q="UPDATE tecnico SET nombreAlumno='{$this->getNombreAlumno()}',numeroSerie='{$this->getNumeroSerie()}',marca='{$this->getMarca()}',problema='{$this->getProblema()}',fecha='{$this->getFecha()}',idreclamo='{$this->getIdReclamo()}',estado='{$this->getEstado2()}' WHERE id='{$this->getId()}'";	
+		$this->setFecha($fecha);	
+
+	 $q="UPDATE tecnico SET nombreAlumno='{$this->getNombreAlumno()}',numeroSerie='{$this->getNumeroSerie()}',marca='{$this->getMarca()}',problema='{$this->getProblema()}',fecha='$fecha',idreclamo='{$this->getIdReclamo()}',estado='{$this->getEstado2()}' WHERE id='{$this->getId()}'";	
 
 		try{
 				$result = mysql_query($q);
@@ -434,14 +435,49 @@ class Tecnico{
 		return 	1;
 	}
 	
-	
+	//////////////////////////////////////////////////////////////////////
 	function dias_transcurridos($fecha_i,$fecha_f)
 	{
 		$dias	= (strtotime($fecha_i)-strtotime($fecha_f))/86400;
 		$dias 	= abs($dias); $dias = floor($dias);
 		return $dias;
 	}
+	//////////////////////////////////////////////////////////////////////7
+	/////////Historial Por Serie////
+	public function listarHistorialTecnico($offset="",$limit="",$campoOrder="",$order="",$busqueda,$usuario){		
+		global $docRootSitio;		
+		$this->setNombreUsuario($usuario);
 	
+	$q = "SELECT SQL_CALC_FOUND_ROWS * FROM tecnico WHERE nombreUsuario='{$this->getNombreUsuario()}' and numeroSerie LIKE '$busqueda'";
+		
+		if($campoOrder!= "" && $order!=""){			
+			${$campoOrder} = $campoOrder;			
+			$q .= " ORDER BY  ${$campoOrder} $order ";						
+		}		
+		
+		if($limit!=""){
+			$q .= " LIMIT $offset,$limit ";			
+		}
+				
+		try{
+			$result = mysql_query($q);
+				if(!$result) {
+					throw new Exception("");
+				}
+		}      
+		catch (Exception $e) {        
+			$error['consulta'] = $q;
+			$error['mysql'] = mysql_error();            
+			include_once ($docRootSitio . "modulos/errores/listarErrores.php");
+			exit();
+		}
+		
+		$i1 = new Iterador();
+		$_tecnicos = $i1->iterarObjetos($result);	
+			
+		return $_tecnicos;	
+	}
+
 	
 	
 }

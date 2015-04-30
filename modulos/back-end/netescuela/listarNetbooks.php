@@ -206,6 +206,11 @@ include_once($docRootSitio."modelo/Administrador.php");
                                                <th>Accion</th>
 											</tr>
                                         </thead>
+                                            <tr>
+             <a href="reportesRemanente.php" target=_blank><img src="<?php echo $httpHostSitio?>imagenes/pdf.png"></a>
+                               
+            </tr>
+        
 										
 		<?php for($i=1;$i<=count($_netbooks);$i++){	
 				$mar1->setNombreUsuario($usuario);

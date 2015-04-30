@@ -179,6 +179,13 @@
 			$order = "DESC";
 		}		
 
+?>
+                                    <tr>
+             <a href="reportesPrestamo.php" target=_blank><img src="<?php echo $httpHostSitio?>imagenes/pdf.png"></a>
+                               
+            </tr>
+        
+<?php
 	if(count($_prestamos)){?>	
 		<table class="table table-bordered table-hover table-striped">
 			<tr>

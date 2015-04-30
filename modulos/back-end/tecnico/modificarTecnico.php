@@ -152,7 +152,7 @@
 				if($_POST['estado']==3 OR $_POST['estado']==4)
 					{
 					$estado="Ok";
-					$update = $tec1->modificarTecnico();
+					$update = $tec1->modificarTecnico($_POST['fecha']);
 					$update = $tec1->modificarEstado($idTecnico);
 					$alu1->actualizarEstadoNetbook($_POST['numeroSerie'],$estado);
 					header("location: listarTecnicos.php?update=$update"); 	
@@ -162,7 +162,7 @@
 					{
 					$estado="S Tecnico";
 					$alu1->actualizarEstadoNetbook($_POST['numeroSerie'],$estado);
-					$update = $tec1->modificarTecnico();
+					$update = $tec1->modificarTecnico($_POST['fecha']);
 					header("location: listarTecnicos.php?update=$update"); 	
 					exit();		
 					}		

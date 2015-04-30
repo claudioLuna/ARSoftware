@@ -193,7 +193,11 @@
                                 <th><center>Acciones</center></th>
                             </tr>
                         </thead>
-                               		
+                                            <tr>
+             <a href="reportesTecnicos.php" target=_blank><img src="<?php echo $httpHostSitio?>imagenes/pdf.png"></a>
+                               
+            </tr>
+                          		
 <?php for($i=1;$i<=count($_tecnicos);$i++){			
 						$_estado = $est1->listarEstado($_tecnicos[$i]['estado']);
 			if($i%2==0){

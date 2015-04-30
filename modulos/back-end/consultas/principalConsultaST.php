@@ -60,7 +60,7 @@
 	include_once($docRootSitio."modelo/Administrador.php");
 	include_once($docRootSitio."modelo/DatosEscuela.php");
 	include_once($docRootSitio."modelo/Consulta.php");
-	
+	include_once($docRootSitio."modelo/EstadosTecnico.php");
 	
 	#nuevo objeto
 	$alu1 = new Alumno();				
@@ -70,7 +70,10 @@
 	$tur1 = new Turno();
 	$datoesc = new DatosEscuela();
 	$consulta = new Consulta();
-	
+	$tec1 = new Tecnico();
+	$est1 = new Estado();	
+
+
 	$usuario = $_SESSION["nombreUsuario"];
 	
 	$alu1->setNombreUsuario($usuario);
@@ -80,7 +83,14 @@
 
 	if($_POST['bandera'] && $_POST['busqueda']!=""){
 		$_GET = null;
-		$_consultas = $consulta->listarEstadoNetbookCurso($offset,$limit,$campoOrder,$order,$_POST['busqueda'],$_POST['campoBusqueda']);
+		
+		$_consultas = $tec1->listarHistorialTecnico($offset,$limit,$campoOrder,$order,$_POST['busqueda'],$_POST['campoBusqueda'],$usuario);
+
+		
+		
+
+	;	
+	
 	}
 	
 		
@@ -92,6 +102,7 @@
 	#Listar Nombre Usuario
 	$_nombre = $adm1->listarAdministradorins2($usuario);
 	
+
 	#campoBusqueda
 	if($_POST['campoBusqueda']){
 		$campoBusqueda['nombre'] = $_POST['campoBusqueda'];
@@ -184,7 +195,7 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-dashboard"></i> Buscar Netbook por Serie
+                                <i class="fa fa-dashboard"></i> Historial Servicio Tecnico por serie.
                             </li>
                         </ol>
                     
@@ -193,7 +204,7 @@
 	                  
 	                    <button type="button" class="btn btn-primary" onclick="location =('<?php echo $httpHostSitio?>modulos/back-end/consultas/principalConsultaNet.php')" >Netbook Serie</button>
 	                    <button type="button" class="btn btn-success" onclick="location =('<?php echo $httpHostSitio?>modulos/back-end/consultas/principalConsultaCurso.php')" >Netbook Curso</button> 	                    
-	                    <button type="button" class="btn btn-warning" onclick="location =('<?php echo $httpHostSitio?>modulos/back-end/consultas/principalConsultaST.php')" >Servicio Tecnico </button>
+	                 <button type="button" class="btn btn-warning" onclick="location =('<?php echo $httpHostSitio?>modulos/back-end/consultas/principalConsultaST.php')" >Servicio Tecnico </button>
 	                    
 	
 	                    
@@ -228,23 +239,26 @@
          </p>				
 	   <!-- /.row -->
 	   
-
+             
 	
 <?php 
 	
 if(count($_consultas)){?>	
+
 	
 		                        <table class="table table-bordered table-hover table-striped">
                                         <thead>
                                             <tr>
                                                 <th>Nombre</th>
-												<th>Apellido</th>
+												
                                                 <th>Cuil</th>
                                                 <th>Curso</th>
-												<th>Escuela</th>
-												<th>Numero De Serie</th>
-												<th>Estado Netbook</th>
-                                                
+											
+												<th>Numero Serie</th>
+												<th>Problema</th>
+                                                <th>Fecha</th>
+                                                <th>Idreclamo</th>
+                                                <th>Estado</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -254,8 +268,10 @@ if(count($_consultas)){?>
 		$_curso = $cur1->listarCurso($_consultas[$i]['curso']);	
 		$_marca = $mar1->listarMarca($_consultas[$i]['MarcaNetbook']);
 		$_turno = $tur1->listarTurno($_consultas[$i]['turno']);
-		$_datos = $datoesc->listarNumeroEscuela($_consultas[$i]['escuela']);	
-		
+		$_datos = $datoesc->listarNumeroEscuela($_consultas[$i]['escuela']);
+		$_estado = $est1->listarEstado($_consultas[$i]['estado']);	
+
+	
 			if($_consultas[$i]['estadoNetbook'] == "Ok")
 			{
 			$color= "green";
@@ -267,13 +283,21 @@ if(count($_consultas)){?>
 
 		?>			
 											<tr>
-                                                <td><?php echo $_consultas[$i]['nombre'];?></td>
-												<td><?php echo $_consultas[$i]['apellido'];?></td>
+                                                <td><?php echo $_consultas[$i]['nombreAlumno'];?></td>
+												
                                                 <td><?php echo $_consultas[$i]['cuil'];?></td>
-                                                <td><?php echo $_curso['nombre'];?></td>
-												<td><?php echo $_datos['numeroEscuela'].' - '.$_datos['nombreEscuela']?></td>
-												<td><?php echo $_consultas[$i]['numSerie'];?></td>
-												<th <?php echo $classTh?> style="color:<?php echo $color?>;"><?php echo $_consultas[$i]['estadoNetbook'];?></th>
+                                                <td><?php echo $_consultas[$i]['curso'];?></td>
+												
+												<td><?php echo $_consultas[$i]['numeroSerie'];?></td>
+												<td><?php echo $_consultas[$i]['problema'];?></td>
+
+												<td><?php echo $_consultas[$i]['fecha'];?></td>
+												<td><?php echo $_consultas[$i]['idreclamo'];?></td>
+												<td><?php echo  $_estado['nombre']?></td>
+
+
+
+												
 											
 			</tr>
 			

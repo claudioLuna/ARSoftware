@@ -42,7 +42,8 @@
 	include_once($docRootSitio."modelo/Administrador.php");
 	include_once($docRootSitio."modelo/DatosEscuela.php");
 	include_once($docRootSitio."modelo/Consulta.php");
-	
+	include_once($docRootSitio."modelo/Tecnico.php");
+	include_once($docRootSitio."modelo/EstadosTecnico.php");
 	
 	#nuevo objeto
 	$alu1 = new Alumno();				
@@ -51,17 +52,21 @@
 	$adm1 = new Administrador();
 	$tur1 = new Turno();
 	$datoesc = new DatosEscuela();
-	
+	$tec1 = new Tecnico();
 	$consulta = new Consulta();
-	
+	$est1 = new Estado();
+
 	$usuario = $_SESSION["nombreUsuario"];
-	$curso=$_GET['Curso'];
+	$serie=$_GET['Serie'];
 
     $alu1->setNombreUsuario($usuario);
 	
+	
 	$cur1->setNombreUsuario($usuario);
 	$_cursos = $cur1->listarCursos();
-    $_consultas = $consulta->listarNetbookCurso($offset,$limit,$campoOrder,$order,$curso,$_POST['campoBusqueda']);
+
+ $_consultas = $tec1->listarHistorialTecnico($offset,$limit,$campoOrder,$order,$serie,$usuario);
+
 
 for($i=1;$i<=count($_consultas);$i++){		
 		
@@ -118,10 +123,9 @@ if(count($_consultas)){?>
                                         <thead>
                                             <tr>
                                                 <th>Nombre</th>
-												<th>Apellido</th>
+												
                                                 <th>Cuil</th>
                                                 <th>Curso</th>
-												<th>Escuela</th>
 												<th>Numero De Serie</th>
 												<th>Estado Netbook</th>
                                                 
@@ -131,10 +135,13 @@ if(count($_consultas)){?>
         		
 		<?php for($i=1;$i<=count($_consultas);$i++){		
 		
+
+		
 		$_curso = $cur1->listarCurso($_consultas[$i]['curso']);	
 		$_marca = $mar1->listarMarca($_consultas[$i]['MarcaNetbook']);
 		$_turno = $tur1->listarTurno($_consultas[$i]['turno']);
 		$_datos = $datoesc->listarNumeroEscuela($_consultas[$i]['escuela']);	
+		$_estado = $est1->listarEstado($_consultas[$i]['estado']);
 		
 			if($_consultas[$i]['estadoNetbook'] == "Ok")
 			{
@@ -147,13 +154,13 @@ if(count($_consultas)){?>
 
 		?>			
 											<tr>
-                                                <td><?php echo $_consultas[$i]['nombre'];?></td>
-												<td><?php echo $_consultas[$i]['apellido'];?></td>
+                                                <td><?php echo $_consultas[$i]['nombreAlumno'];?></td>
+												
                                                 <td><?php echo $_consultas[$i]['cuil'];?></td>
-                                                <td><?php echo $_curso['nombre'];?></td>
-												<td><?php echo $_datos['numeroEscuela'].' - '.$_datos['nombreEscuela']?></td>
-												<td><?php echo $_consultas[$i]['numSerie'];?></td>
-												<th <?php echo $classTh?> style="color:<?php echo $color?>;"><?php echo $_consultas[$i]['estadoNetbook'];?></th>
+                                                <td><?php echo $_consultas[$i]['curso'];?></td>
+												
+												<td><?php echo $_consultas[$i]['numeroSerie'];?></td>
+                                             <td><center><?php echo  $_estado['nombre']?></td></center>												
 											
 			</tr>
 			<tr>

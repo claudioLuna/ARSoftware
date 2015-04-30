@@ -31,57 +31,47 @@
 
      <title>ARSoftware</title>
 <?php
-	
-    include_once($_SERVER["DOCUMENT_ROOT"]."/arsoftware/utiles/headerAdmin.php");	
-    include_once($docRootSitio."modelo/Alumno.php");
-    include_once($docRootSitio."modelo/Marca.php");
-    include_once($docRootSitio."modelo/Curso.php");
-    include_once($docRootSitio."modelo/Turno.php");
-    include_once($docRootSitio."modelo/Tecnico.php");
-    include_once($docRootSitio."modelo/Prestamo.php");
-	include_once($docRootSitio."modelo/Administrador.php");
-	include_once($docRootSitio."modelo/DatosEscuela.php");
-	include_once($docRootSitio."modelo/Consulta.php");
-	
+    include_once($_SERVER["DOCUMENT_ROOT"]."/arsoftware/utiles/headerAdmin.php");
+	include_once($docRootSitio."modelo/Administrador.php");	
+	include_once($docRootSitio."modelo/Prestamo.php");	
+	include_once($docRootSitio."modelo/Alumno.php");
+	include_once($docRootSitio."modelo/Curso.php");	
 	
 	#nuevo objeto
-	$alu1 = new Alumno();				
+	$pre1 = new Prestamo();
+	$alu1 = new Alumno();
 	$cur1 = new Curso();
-	$mar1 = new Marca();
 	$adm1 = new Administrador();
-	$tur1 = new Turno();
-	$datoesc = new DatosEscuela();
-	
-	$consulta = new Consulta();
-	
+	   
+	#Variable
 	$usuario = $_SESSION["nombreUsuario"];
-	$curso=$_GET['Curso'];
-
-    $alu1->setNombreUsuario($usuario);
-	
-	$cur1->setNombreUsuario($usuario);
-	$_cursos = $cur1->listarCursos();
-    $_consultas = $consulta->listarNetbookCurso($offset,$limit,$campoOrder,$order,$curso,$_POST['campoBusqueda']);
-
-for($i=1;$i<=count($_consultas);$i++){		
-		
-
-		$_datos = $datoesc->listarNumeroEscuela($_consultas[$i]['escuela']);	
-		
-}
-	
-	
-		
+    $_nombre = $adm1->listarAdministradorins2($usuario);
+	$pre1->setNombreUsuario($usuario);
+	$_prestamos = $pre1->listarPrestamos($offset,$limit,$campoOrder,$order);	
 	
 	#getCantRegistros
-	$cantRegistros = $alu1->getCantRegistros();	
+	$cantRegistros = $pre1->getCantRegistros();	
 	$cantPaginas = ceil($cantRegistros/$limit);
-
-	#Listar Nombre Usuario
-	$_nombre = $adm1->listarAdministradorins2($usuario);
-
 	
-?> 
+	#Paginación	
+	$limit=25;		
+	if(is_numeric($_GET['pagina']) && $_GET['pagina']>=1){				
+		$offset = ($_GET['pagina']-1) * $limit;		
+	}
+	else{
+		$offset=0;
+	}
+	
+	#Orden por defecto
+	if(!isset($_GET['campoOrder']) && !isset($_GET['order']) ){
+		$order = "DESC";
+	}
+	else{
+		$campoOrder = $_GET['campoOrder'];
+		$order = $_GET['order'];
+	}
+	
+?>
  
 </head>
 
@@ -98,7 +88,7 @@ for($i=1;$i<=count($_consultas);$i++){
 	
 	
 			<P LANG="es-ES" CLASS="western" ALIGN=CENTER><FONT FACE="Arial, sans-serif"><FONT SIZE=3 STYLE="font-size: 13pt">
-			<B>REPORTE DE NETBOOKS POR CURSO. </B></FONT></FONT>
+			<B>PRESTAMOS DE NETBOOK. </B></FONT></FONT>
 			<BR><B> <?php echo $_datos['numeroEscuela'];?></B><B> <?php echo $_datos['nombreEscuela'];?></B>
 			
 			
@@ -111,63 +101,83 @@ for($i=1;$i<=count($_consultas);$i++){
 	
 <?php 
 	
-if(count($_consultas)){?>	
-	<br>
-	<br>
-		                        <table border="1" align="center">
-                                        <thead>
-                                            <tr>
-                                                <th>Nombre</th>
-												<th>Apellido</th>
-                                                <th>Cuil</th>
-                                                <th>Curso</th>
-												<th>Escuela</th>
-												<th>Numero De Serie</th>
-												<th>Estado Netbook</th>
-                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-        		
-		<?php for($i=1;$i<=count($_consultas);$i++){		
+if(count($_prestamos)){?>	
+<br>
+<br>
+		<table border="1" align="center">
+			<tr>
+				<th>					
+					<center><b>Numero De Serie</b></center>		
+				</th>
+				<th>					
+					<center><b>Nombre Alumno</b></center>
+				</th>
+				<th>					
+					<center><b>Fecha Prestamo</b></center>		
+				</th>
+				<th>					
+					<center><b>Fecha Devolucion</b></center>			
+				</th>
+				<th>					
+					<center><b>Estado</b></center>			
+				</th>
+				<th>					
+					<center><b>Curso</b></center>	
+				</th>
+				
+			</tr>	
 		
-		$_curso = $cur1->listarCurso($_consultas[$i]['curso']);	
-		$_marca = $mar1->listarMarca($_consultas[$i]['MarcaNetbook']);
-		$_turno = $tur1->listarTurno($_consultas[$i]['turno']);
-		$_datos = $datoesc->listarNumeroEscuela($_consultas[$i]['escuela']);	
-		
-			if($_consultas[$i]['estadoNetbook'] == "Ok")
+		<?php for($i=1;$i<=count($_prestamos);$i++){			
+		$_nombre = $alu1->listarAlumno($_prestamos[$i]['nombre']);
+		$_curso = $cur1->listarCurso($_prestamos[$i]['curso']);
+			if($i%2==0){
+					$class="class='alt'";
+					$classTh="class='specalt'";
+				}
+				else{
+					$class="";
+					$classTh="class='spec'";
+				}
+				
+			if($_prestamos[$i]['fechaHasta'] <= date("Y-m-d"))
 			{
-			$color= "green";
+			$men="Debe Devolver La Netbook";
+			$color= "red";
 			}
 			else
 			{
-			$color= "red";
+			$men="Ok";
+			$color= "black";
 			}
-
+			
 		?>			
-											<tr>
-                                                <td><?php echo $_consultas[$i]['nombre'];?></td>
-												<td><?php echo $_consultas[$i]['apellido'];?></td>
-                                                <td><?php echo $_consultas[$i]['cuil'];?></td>
-                                                <td><?php echo $_curso['nombre'];?></td>
-												<td><?php echo $_datos['numeroEscuela'].' - '.$_datos['nombreEscuela']?></td>
-												<td><?php echo $_consultas[$i]['numSerie'];?></td>
-												<th <?php echo $classTh?> style="color:<?php echo $color?>;"><?php echo $_consultas[$i]['estadoNetbook'];?></th>
+			<tr>			
+				<td>
+					<center><?php echo $_prestamos[$i]['numSerie']?></center>
+				</td>	
+				<td>
+					<center><?php echo $_nombre['nombre'].' '.$_nombre['apellido']?></center>
+				</td>
+				<td>
+					<center><?php echo $_prestamos[$i]['fechaDesde']?></center>
+				</td>
+				<td>
+					<center><?php echo $_prestamos[$i]['fechaHasta']?></center>
+				</td>
+				<td style="color:<?php echo $color?>;"></center>
+					<center><?php echo $men?>
+				</td>
+				<td>
+					<center><?php echo $_curso['nombre']?></center>
+				</td>
 											
 			</tr>
-			<tr>
-			 
-                               
-			</tr>
-		<?php }}
-
-		
+		<?php }?>
+		</table>
+			 <?php }								
 			else{?>
-			<br>
-			<br>
 			<div class="alert alert-info">
-                    <center><strong>Aviso! </strong> No existen resultados.</center>
+                    <center><strong>Aviso! </strong> No existen Netbook cargadas.</center>
     </div>
 	<?php }?>
 	
@@ -176,7 +186,8 @@ if(count($_consultas)){?>
 								  </tbody>
 								  </table>
                                             
-         
+         <br>
+      
           <div id="palabra" value="" style="border:1px solid #000000; width:140px;height:20px;margin:0 auto;padding:5px;background:#ABE319;font-Size:18px;" onclick="style.display='none',window.print();"><center>Imprimir</center></div>
         </div><!-- Fin container-fluid ------------------------------------------------------------------------------------------------------>
         <!-- /#page-wrapper -->
